@@ -1,329 +1,1956 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FipokZec - Персональний сайт</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CleanPro — Клінінгова компанія №1 у Києві</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Reset */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --primary: #00b894;
+      --primary-dark: #019270;
+      --secondary: #6c5ce7;
+      --accent: #fd79a8;
+      --text: #2d3436;
+      --text-light: #636e72;
+      --light: #f8f9fa;
+      --white: #ffffff;
+      --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s ease;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      color: var(--text);
+      line-height: 1.6;
+      scroll-behavior: smooth;
+      background-color: #f9f9f9;
+      overflow-x: hidden;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
+
+    /* Language Switcher */
+    .language-switcher {
+      position: relative;
+      display: inline-block;
+      margin-left: 20px;
+    }
+
+    .language-btn {
+      background: var(--light);
+      border: none;
+      padding: 8px 15px;
+      border-radius: 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: var(--transition);
+    }
+
+    .language-btn:hover {
+      background: var(--primary);
+      color: var(--white);
+    }
+
+    .language-options {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background: var(--white);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      padding: 10px 0;
+      min-width: 120px;
+      z-index: 1001;
+      display: none;
+    }
+
+    .language-options.active {
+      display: block;
+    }
+
+    .language-option {
+      padding: 8px 15px;
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .language-option:hover {
+      background: var(--light);
+    }
+
+    /* Header */
+    .header {
+      background: var(--white);
+      box-shadow: var(--shadow);
+      padding: 15px 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      transition: var(--transition);
+    }
+
+    .header.scrolled {
+      padding: 10px 0;
+    }
+
+    .header-flex {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: bold;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo i {
+      font-size: 32px;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+    }
+
+    .nav a {
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 500;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 3px;
+      background: var(--primary);
+      transition: var(--transition);
+    }
+
+    .nav a:hover {
+      color: var(--primary);
+    }
+
+    .nav a:hover::after {
+      width: 100%;
+    }
+
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      color: var(--text);
+    }
+
+    /* Hero */
+    .hero {
+      padding: 100px 0 80px;
+      background: linear-gradient(135deg, #f6fbfd 0%, #e9f5fb 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      right: -100px;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: rgba(0, 184, 148, 0.1);
+      z-index: 0;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -50px;
+      left: -50px;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: rgba(108, 92, 231, 0.1);
+      z-index: 0;
+    }
+
+    .hero-flex {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-content {
+      flex: 3;
+    }
+
+    .hero-image {
+      flex: 1;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero-image img {
+      width: 100%;
+      max-width: 400px;
+      height: auto;
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      transform: rotate(3deg);
+      transition: var(--transition);
+    }
+
+    .hero-image img:hover {
+      transform: rotate(0deg);
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      color: var(--text);
+      line-height: 1.2;
+    }
+
+    .hero h1 span {
+      color: var(--primary);
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      color: var(--text-light);
+    }
+
+    .btn {
+      background: var(--primary);
+      color: var(--white);
+      padding: 14px 35px;
+      border-radius: 30px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: var(--transition);
+      display: inline-block;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: var(--primary-dark);
+      transition: var(--transition);
+      z-index: -1;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .btn:hover::before {
+      left: 0;
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--primary);
+      border: 2px solid var(--primary);
+      margin-left: 15px;
+    }
+
+    .btn-secondary::before {
+      background: var(--primary);
+    }
+
+    .btn-secondary:hover {
+      color: var(--white);
+    }
+
+    /* Services */
+    .features {
+      padding: 100px 0;
+      background: var(--white);
+      position: relative;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 50px;
+      font-size: 2.5rem;
+      color: var(--primary);
+      position: relative;
+      padding-bottom: 15px;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: var(--primary);
+      border-radius: 2px;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .feature {
+      background: var(--light);
+      border-radius: 15px;
+      overflow: hidden;
+      text-align: center;
+      transition: var(--transition);
+      box-shadow: var(--shadow);
+      position: relative;
+      top: 0;
+    }
+
+    .feature:hover {
+      top: -10px;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .feature-img-container {
+      height: 200px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .feature-img-container::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 30%;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.3), transparent);
+    }
+
+    .feature img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+
+    .feature:hover img {
+      transform: scale(1.05);
+    }
+
+    .feature-content {
+      padding: 25px;
+    }
+
+    .feature h3 {
+      margin: 0 0 15px;
+      color: var(--primary);
+      font-size: 1.5rem;
+    }
+
+    .feature p {
+      color: var(--text-light);
+      margin-bottom: 20px;
+    }
+
+    .feature-icon {
+      font-size: 50px;
+      color: var(--primary);
+      margin-bottom: 20px;
+      display: inline-block;
+      height: 80px;
+      width: 80px;
+      line-height: 80px;
+      border-radius: 50%;
+      background: rgba(0, 184, 148, 0.1);
+    }
+
+    /* About & Additional Info */
+    .about, .additional-info, .guarantees, .cleaning-steps, .contact {
+      padding: 100px 0;
+    }
+
+    .about {
+      background: var(--light);
+    }
+
+    .additional-info, .cleaning-steps {
+      background: var(--white);
+    }
+
+    .guarantees {
+      background: #e8f4f2;
+    }
+
+    .about h2, .additional-info h2, .guarantees h2, .cleaning-steps h2, .contact h2 {
+      text-align: center;
+      margin-bottom: 50px;
+      font-size: 2.5rem;
+      color: var(--primary);
+      position: relative;
+      padding-bottom: 15px;
+    }
+
+    .about h2::after, .additional-info h2::after, .guarantees h2::after, .cleaning-steps h2::after, .contact h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: var(--primary);
+      border-radius: 2px;
+    }
+
+    .about-content, .info-content, .guarantees-content, .steps-content {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .about p, .info-content p, .guarantees-content p, .steps-content p {
+      margin-bottom: 20px;
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .guarantee-item {
+      background: var(--white);
+      padding: 30px;
+      border-radius: 15px;
+      margin-bottom: 30px;
+      box-shadow: var(--shadow);
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+    }
+
+    .guarantee-icon {
+      font-size: 30px;
+      color: var(--primary);
+      background: rgba(0, 184, 148, 0.1);
+      height: 60px;
+      width: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .guarantee-text h3 {
+      color: var(--primary);
+      margin-bottom: 15px;
+      font-size: 1.4rem;
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .step-item {
+      background: var(--light);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .step-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 5px;
+      height: 100%;
+      background: var(--primary);
+    }
+
+    .step-item h3 {
+      color: var(--primary);
+      margin-bottom: 20px;
+      font-size: 1.4rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .step-item h3 i {
+      font-size: 24px;
+    }
+
+    .step-item ul {
+      padding-left: 20px;
+    }
+
+    .step-item li {
+      margin-bottom: 10px;
+      position: relative;
+    }
+
+    .step-item li::marker {
+      color: var(--primary);
+    }
+
+    /* Testimonials */
+    .testimonials {
+      padding: 100px 0;
+      background: var(--light);
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+    }
+
+    .testimonial {
+      background: var(--white);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: var(--shadow);
+      position: relative;
+    }
+
+    .testimonial::before {
+      content: '\201C';
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 60px;
+      color: rgba(0, 184, 148, 0.1);
+      font-family: Arial, sans-serif;
+    }
+
+    .testimonial-text {
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .author-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      overflow: hidden;
+    }
+
+    .author-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .author-details h4 {
+      color: var(--primary);
+      margin-bottom: 5px;
+    }
+
+    /* FAQ */
+    .faq {
+      padding: 100px 0;
+      background: var(--light);
+    }
+
+    .accordion {
+      margin-top: 50px;
+    }
+
+    .accordion-item {
+      background: var(--white);
+      border-radius: 8px;
+      margin-bottom: 15px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .accordion-header {
+      padding: 20px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 600;
+    }
+
+    .accordion-content {
+      padding: 0 20px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+
+    .accordion-content.active {
+      padding: 20px;
+      max-height: 300px;
+    }
+
+    /* CTA Section */
+    .cta {
+      padding: 80px 0;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: var(--white);
+      text-align: center;
+    }
+
+    .cta h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    .cta p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .cta .btn {
+      background: var(--white);
+      color: var(--primary);
+    }
+
+    .cta .btn::before {
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    /* Contact */
+    .contact {
+      background: var(--white);
+    }
+
+    .contact-wrapper {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 50px;
+      margin-top: 50px;
+    }
+
+    .contact-info {
+      background: var(--light);
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: var(--shadow);
+    }
+
+    .contact-info h3 {
+      color: var(--primary);
+      margin-bottom: 25px;
+      font-size: 1.5rem;
+    }
+
+    .contact-detail {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .contact-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: rgba(0, 184, 148, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+      font-size: 20px;
+    }
+
+    .contact-text p {
+      margin: 0;
+    }
+
+    .contact-form {
+      background: var(--light);
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: var(--shadow);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 16px;
+      transition: var(--transition);
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(0, 184, 148, 0.2);
+    }
+
+    textarea.form-control {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--text);
+      color: var(--white);
+      padding: 60px 0 30px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .footer-col h3 {
+      color: var(--primary);
+      margin-bottom: 20px;
+      font-size: 1.3rem;
+    }
+
+    .footer-col p, .footer-col a {
+      color: #b2bec3;
+      margin-bottom: 10px;
+      display: block;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .footer-col a:hover {
+      color: var(--primary);
+    }
+
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .social-links a {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+    }
+
+    .social-links a:hover {
+      background: var(--primary);
+      transform: translateY(-3px);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* Back to top */
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      box-shadow: var(--shadow);
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--transition);
+      z-index: 999;
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .back-to-top:hover {
+      background: var(--primary-dark);
+      transform: translateY(-5px);
+    }
+
+    /* Анімації */
+    .hidden {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease-out;
+    }
+
+    .visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      .hero-flex {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .hero-content, .hero-image {
+        flex: none;
+        width: 100%;
+      }
+      
+      .hero-image {
+        margin-top: 40px;
+      }
+      
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+
+      .nav {
+        position: fixed;
+        top: 80px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 80px);
+        background: var(--white);
+        flex-direction: column;
+        padding: 40px 20px;
+        transition: var(--transition);
+        z-index: 999;
+      }
+
+      .nav.active {
+        left: 0;
+      }
+
+      .nav-toggle {
+        display: block;
+      }
+
+      .language-switcher {
+        margin-left: 0;
+        margin-top: 20px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+      
+      .section-title {
+        font-size: 2rem;
+      }
+      
+      .guarantee-item {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .btn-secondary {
+        margin-left: 0;
+        margin-top: 15px;
+      }
+
+      .contact-wrapper {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+      
+      .hero p {
+        font-size: 1rem;
+      }
+      
+      .btn {
+        padding: 12px 25px;
+      }
+      
+      .section-title {
+        font-size: 1.8rem;
+      }
+      
+      .feature, .step-item, .testimonial, .contact-info, .contact-form {
+        padding: 20px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <!-- Лоадер -->
-    <div id="loader">
-        <div class="spinner"></div>
-        <div class="loader-text">Завантаження системи...</div>
-    </div>
 
-    <!-- Анімований фон -->
-    <div class="animated-bg"></div>
-    
-    <!-- Динамічні елементи -->
-    <div id="dynamicElements"></div>
-
-    <header>
-        <nav>
-            <div class="logo">
-                <span class="logo-code">&lt;</span>
-                FipokZec
-                <span class="logo-code">/&gt;</span>
-            </div>
-            <div class="nav-links">
-                <a href="#about"><i class="fas fa-user"></i> Про мене</a>
-                <a href="#apps"><i class="fas fa-mobile-alt"></i> Додатки</a>
-                <a href="#skills"><i class="fas fa-code"></i> Навички</a>
-                <button id="themeToggle" title="Змінити тему">
-                    <i class="fas fa-moon"></i>
-                </button>
-            </div>
-            <div class="mobile-menu-btn">
-                <i class="fas fa-bars"></i>
-            </div>
-        </nav>
-    </header>
-    
-    <main>
-        <!-- Hero секція -->
-        <section class="hero-section">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1 class="hero-title">Привіт! Я <span class="highlight">FipokZec</span></h1>
-                    <div class="typewriter">
-                        <span class="typewriter-text">C++ розробник</span>
-                        <span class="typewriter-cursor">|</span>
-                    </div>
-                    <p class="hero-subtitle">Спеціаліст з високопродуктивних рішень та оптимізації коду</p>
-                </div>
-                <div class="hero-scroll">
-                    <a href="#about" class="scroll-down">
-                        <i class="fas fa-chevron-down"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="hero-particles" id="heroParticles"></div>
-        </section>
+  <!-- Header -->
+  <header class="header" id="header">
+    <div class="container header-flex">
+      <div class="logo">
+        <i class="fas fa-spa"></i> CleanPro
+      </div>
+      <nav class="nav" id="nav">
+        <a href="#services" data-i18n="nav.services">Послуги</a>
+        <a href="#about" data-i18n="nav.about">Про нас</a>
+        <a href="#guarantees" data-i18n="nav.guarantees">Гарантії</a>
+        <a href="#testimonials" data-i18n="nav.testimonials">Відгуки</a>
+        <a href="#contact" data-i18n="nav.contact">Контакти</a>
         
-        <!-- Про мене -->
-        <section id="about" class="section fade-in">
-            <h2 class="section-title">
-                <span class="section-title-code">//</span> Про мене
-            </h2>
-            <div class="about-container">
-                <div class="about-photo">
-                    <div class="photo-frame"></div>
-                    <img src="https://github.com/Kolya-f/f/raw/main/images/my_photo.png" alt="Моє фото" class="floating-img">
-                    <div class="photo-tech-icons">
-                        <i class="fab fa-cuttlefish"></i>
-                        <i class="fab fa-android"></i>
-                        <i class="fab fa-html5"></i>
-                    </div>
-                </div>
-                <div class="about-text">
-                    <h2>Хто я?</h2>
-                    <p>Привіт! Я FipokZec, C++ розробник з України. Моя основна спеціалізація - розробка програмного забезпечення на C++ з використанням сучасних стандартів (C++17/20).</p>
-                    <p>Також маю досвід роботи з Kotlin (Android розробка) та HTML/CSS (верстка простих сайтів). Але моя справжня любов - це C++, особливо низькорівневі аспекти та оптимізація коду.</p>
-                    <div class="about-features">
-                        <div class="feature-card">
-                            <i class="fas fa-bolt"></i>
-                            <span>Оптимізація</span>
-                        </div>
-                        <div class="feature-card">
-                            <i class="fas fa-cogs"></i>
-                            <span>Складні системи</span>
-                        </div>
-                        <div class="feature-card">
-                            <i class="fas fa-rocket"></i>
-                            <span>Висока продуктивність</span>
-                        </div>
-                    </div>
-                    
-                    <div class="hobbies-section">
-                        <h3>У вільний час:</h3>
-                        <div class="hobbies-list">
-                            <div class="hobby-item">
-                                <i class="fas fa-laptop-code"></i>
-                                <span>Працюю над власними проектами</span>
-                            </div>
-                            <div class="hobby-item">
-                                <i class="fas fa-book"></i>
-                                <span>Вивчаю нові технології</span>
-                            </div>
-                            <div class="hobby-item">
-                                <i class="fas fa-tachometer-alt"></i>
-                                <span>Оптимізую код</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="social-links">
-                        <a href="https://instagram.com/ihnatenko_nikolay" target="_blank" class="social-btn instagram">
-                            <i class="fab fa-instagram"></i> Instagram
-                        </a>
-                        <a href="https://t.me/kolya_fip" target="_blank" class="social-btn telegram">
-                            <i class="fab fa-telegram"></i> Telegram
-                        </a>
-                        <a href="https://github.com/Kolya-f" target="_blank" class="social-btn github">
-                            <i class="fab fa-github"></i> GitHub
-                        </a>
-                    </div>
-                </div>
+        <div class="language-switcher">
+          <button class="language-btn" id="languageBtn">
+            <i class="fas fa-globe"></i>
+            <span id="currentLanguage">Укр</span>
+            <i class="fas fa-chevron-down"></i>
+          </button>
+          <div class="language-options" id="languageOptions">
+            <div class="language-option" data-lang="uk">
+              <i class="fas fa-check"></i>
+              <span>Українська</span>
             </div>
-        </section>
-
-        <!-- Мої додатки -->
-        <section id="apps" class="section apps-section">
-            <h2 class="section-title">
-                <span class="section-title-code">#</span> Мої додатки
-            </h2>
-            <div class="apps-container">
-                <div class="apps-grid">
-                    <div class="app-card">
-                        <div class="app-icon"><i class="fas fa-desktop"></i></div>
-                        <h3>App Usage Monitor</h3>
-                        <p>Моніторинг використання додатків на вашому комп'ютері з детальною статистикою</p>
-                        <div class="app-features">
-                            <span><i class="fas fa-check"></i> Реальний моніторинг</span>
-                            <span><i class="fas fa-check"></i> Детальна статистика</span>
-                            <span><i class="fas fa-check"></i> Гнучкі налаштування</span>
-                        </div>
-                        <a href="https://github.com/Kolya-f/f/raw/main/downloads/App_usage_monitor_setup.exe" class="download-btn">
-                            <span class="btn-text">Завантажити для Windows</span>
-                            <i class="fas fa-download"></i>
-                        </a>
-                    </div>
-                    
-                    <div class="app-card">
-                        <div class="app-icon"><i class="fas fa-mobile-alt"></i></div>
-                        <h3>Mobile Debug App</h3>
-                        <p>Додаток для налагодження мобільних додатків (стабільна версія)</p>
-                        <div class="app-features">
-                            <span><i class="fas fa-check"></i> Віддалене налагодження</span>
-                            <span><i class="fas fa-check"></i> Логування помилок</span>
-                            <span><i class="fas fa-check"></i> Аналіз продуктивності</span>
-                        </div>
-                        <a href="https://github.com/Kolya-f/f/raw/main/downloads/app-debug(2).apk" class="download-btn">
-                            <span class="btn-text">Завантажити для Android</span>
-                            <i class="fas fa-download"></i>
-                        </a>
-                    </div>
-                    
-                    <div class="app-card">
-                        <div class="app-icon"><i class="fas fa-bug"></i></div>
-                        <h3>Error Debug App</h3>
-                        <p>Експериментальна версія з розширеними інструментами налагодження</p>
-                        <div class="app-features">
-                            <span><i class="fas fa-check"></i> Розширена діагностика</span>
-                            <span><i class="fas fa-check"></i> Тестування продуктивності</span>
-                            <span><i class="fas fa-check"></i> Експериментальні функції</span>
-                        </div>
-                        <a href="https://github.com/Kolya-f/f/raw/main/downloads/app-debug.apk" class="download-btn">
-                            <span class="btn-text">Завантажити для Android</span>
-                            <i class="fas fa-download"></i>
-                        </a>
-                    </div>
-                </div>
+            <div class="language-option" data-lang="en">
+              <i class="fas fa-check"></i>
+              <span>English</span>
             </div>
-        </section>
-
-        <!-- Навички -->
-        <section id="skills" class="section">
-            <h2 class="section-title">
-                <span class="section-title-code">&lt;/&gt;</span> Мої навички
-            </h2>
-            <div class="skills-container">
-                <div class="skill-item" data-percent="90">
-                    <div class="skill-info">
-                        <span>C++ (C++17/20, STL, Boost)</span>
-                        <span class="skill-percent"></span>
-                    </div>
-                    <div class="skill-bar"><div class="skill-progress"></div></div>
-                </div>
-                
-                <div class="skill-item" data-percent="65">
-                    <div class="skill-info">
-                        <span>Kotlin (Android розробка)</span>
-                        <span class="skill-percent"></span>
-                    </div>
-                    <div class="skill-bar"><div class="skill-progress"></div></div>
-                </div>
-                
-                <div class="skill-item" data-percent="50">
-                    <div class="skill-info">
-                        <span>HTML/CSS/JavaScript</span>
-                        <span class="skill-percent"></span>
-                    </div>
-                    <div class="skill-bar"><div class="skill-progress"></div></div>
-                </div>
-                
-                <div class="skill-item" data-percent="40">
-                    <div class="skill-info">
-                        <span>SQL (SQLite, PostgreSQL)</span>
-                        <span class="skill-percent"></span>
-                    </div>
-                    <div class="skill-bar"><div class="skill-progress"></div></div>
-                </div>
-                
-                <div class="skill-item" data-percent="30">
-                    <div class="skill-info">
-                        <span>GodotScript (GDScript)</span>
-                        <span class="skill-percent"></span>
-                    </div>
-                    <div class="skill-bar"><div class="skill-progress"></div></div>
-                </div>
+            <div class="language-option" data-lang="pl">
+              <i class="fas fa-check"></i>
+              <span>Polski</span>
             </div>
-            
-            <div class="philosophy-card">
-                <div class="philosophy-icon">
-                    <i class="fas fa-quote-left"></i>
-                </div>
-                <p class="philosophy-text">"Код повинен бути не тільки функціональним, але й елегантним. Чим простіше рішення - тим воно геніальніше."</p>
-                <div class="philosophy-tech-icons">
-                    <i class="fab fa-cuttlefish"></i>
-                    <i class="fas fa-plus"></i>
-                    <i class="fab fa-cuttlefish"></i>
-                    <i class="fas fa-plus"></i>
-                    <i class="fab fa-js"></i>
-                </div>
-            </div>
-        </section>
-
-        <!-- Філософія -->
-        <section class="philosophy-quote-container">
-            <div class="dynamic-background">
-                <div class="code-particle"></div>
-                <div class="code-particle"></div>
-                <div class="code-particle"></div>
-            </div>
-            
-            <div class="quote-content">
-                <div class="typing-animation">
-                    <span class="quote-text">Програмування - це не просто написання коду, це мистецтво створення логічних структур, які оживають у цифровому світі.</span>
-                </div>
-                
-                <div class="signature-animation">
-                    <span class="signature-line"></span>
-                    <span class="signature">- FipokZec</span>
-                </div>
-            </div>
-            
-            <div class="interactive-elements">
-                <div class="floating-bracket">{</div>
-                <div class="floating-bracket">}</div>
-                <div class="binary-flow">10101010</div>
-            </div>
-        </section>
-
-        <!-- Принципи роботи -->
-        <section class="principles-section">
-            <h2>Мої принципи роботи</h2>
-            <div class="principles-list">
-                <div class="principle-card">
-                    <div class="principle-icon">💡</div>
-                    <h3>Простота</h3>
-                    <p>Найкращі рішення часто найпростіші. Я завжди прагну знайти найефективніший шлях реалізації.</p>
-                </div>
-                <div class="principle-card">
-                    <div class="principle-icon">⚡</div>
-                    <h3>Оптимізація</h3>
-                    <p>Кожен рядок коду має бути обдуманим. Я зосереджуюсь на продуктивності та ефективності.</p>
-                </div>
-                <div class="principle-card">
-                    <div class="principle-icon">📖</div>
-                    <h3>Читабельність</h3>
-                    <p>Код повинен бути зрозумілим не тільки комп'ютеру, але й іншим розробникам.</p>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="footer-content">
-            <div class="footer-logo">
-                <span class="logo-code">&lt;</span>
-                FipokZec
-                <span class="logo-code">/&gt;</span>
-            </div>
-            <div class="footer-links">
-                <a href="#about">Про мене</a>
-                <a href="#apps">Додатки</a>
-                <a href="#skills">Навички</a>
-                <a href="https://github.com/Kolya-f" target="_blank">GitHub</a>
-            </div>
-            <div class="footer-social">
-                <a href="https://instagram.com/ihnatenko_nikolay" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a href="https://t.me/kolya_fip" target="_blank"><i class="fab fa-telegram"></i></a>
-                <a href="https://github.com/Kolya-f" target="_blank"><i class="fab fa-github"></i></a>
-            </div>
+          </div>
         </div>
-        <div class="footer-copyright">
-            © 2025 FipokZec. Всі права захищені.
-        </div>
-    </footer>
+      </nav>
+      <button class="nav-toggle" id="navToggle">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </header>
 
-    <script src="js/script.js"></script>
-    <script src="js/animations.js"></script>
-    <script src="js/particles.js"></script>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container hero-flex">
+      <div class="hero-content">
+        <h1 data-i18n="hero.title">Чистота — <span>наша місія</span></h1>
+        <p data-i18n="hero.description">Клінінгова компанія №1 у Києві. Ідеальна чистота у вашому домі — запорука гарного настрою, міцного здоров'я та високої працездатності.</p>
+        <div class="hero-buttons">
+          <a href="#services" class="btn" data-i18n="hero.servicesBtn">Наші послуги</a>
+          <a href="#contact" class="btn btn-secondary" data-i18n="hero.orderBtn">Замовити</a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="https://cdn.inmyroom.ru/uploads/post/teaser/0c/0cdd/0cdd3293-0164-40ec-80af-6d029edbc171.jpg" alt="Приклад прибирання">
+      </div>
+    </div>
+  </section>
+
+  <!-- Features / Services -->
+  <section class="features" id="services">
+    <div class="container">
+      <h2 class="section-title" data-i18n="services.title">Наші послуги</h2>
+      <div class="features-grid">
+        <div class="feature">
+          <div class="feature-img-container">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSt4KZgQPJZijymH0FNU7lpW7yD6_2NYDorBw&s" alt="Гостина кімната">
+          </div>
+          <div class="feature-content">
+            <div class="feature-icon">
+              <i class="fas fa-leaf"></i>
+            </div>
+            <h3 data-i18n="services.eco.title">Еко-засоби</h3>
+            <p data-i18n="services.eco.description">Ми використовуємо лише безпечні та сертифіковані засоби, які не шкодять здоров'ю вашої родини та навколишньому середовищу.</p>
+          </div>
+        </div>
+        <div class="feature">
+          <div class="feature-img-container">
+            <img src="https://placehold.co/400x300/00b894/white?text=Кухня" alt="Кухонна зона">
+          </div>
+          <div class="feature-content">
+            <div class="feature-icon">
+              <i class="fas fa-bolt"></i>
+            </div>
+            <h3 data-i18n="services.fast.title">Швидке прибирання</h3>
+            <p data-i18n="services.fast.description">Працюємо оперативно без втрати якості. Наші спеціалісти знають, як ефективно прибирати навіть найскладніші забруднення.</p>
+          </div>
+        </div>
+        <div class="feature">
+          <div class="feature-img-container">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrJjD14CKD5bzaYRUoG3c57pnK3MALe9ihGw&s" alt="Гарантія результату">
+          </div>
+          <div class="feature-content">
+            <div class="feature-icon">
+              <i class="fas fa-shield-alt"></i>
+            </div>
+            <h3 data-i18n="services.guarantee.title">Гарантія результату</h3>
+            <p data-i18n="services.guarantee.description">Наша команда — професіонали з досвідом. Ми гарантуємо якість нашої роботи та вашого задоволення.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="about" id="about">
+    <div class="container">
+      <h2 class="section-title" data-i18n="about.title">Про нас</h2>
+      <div class="about-content">
+        <p data-i18n="about.text1">CleanPro — команда експертів у сфері клінінгових послуг. Ми дбаємо про чистоту вашого простору, як про власний. Наш досвід та зосередженість на деталях роблять нас ідеальним вибором для вашого дому чи бізнесу.</p>
+        <p data-i18n="about.text2">Ми працюємо на ринку вже понад 5 років і маємо сотні задоволених клієнтів. Наша мета — не просто прибрати, а створити для вас комфортне та безпечне середовище.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Additional Info -->
+  <section class="additional-info">
+    <div class="container">
+      <div class="info-content">
+        <p data-i18n="info.text1">Якщo ви прагнете жити в затишку та комфорті, клінінгова компанія CleanPro пропонує якісний сервіс обслуговування клієнтів у м. Київ та Київській області.</p>
+        <p data-i18n="info.text2">Стартова ціна прибирання становить від 420 грн, що є важливим критерієм вибору підприємства, що надає клінінговий сервіс.</p>
+        <p data-i18n="info.text3">Клінінгові послуги нашої фірми — це професійний підхід мобільної бригади, яка виконує завдання швидко та відповідально. У заздалегідь обумовлений час ми виїдемо на об'єкт і проведемо всі необхідні роботи.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Guarantees -->
+  <section class="guarantees" id="guarantees">
+    <div class="container">
+      <h2 class="section-title" data-i18n="guarantees.title">Що ми гарантуємо?</h2>
+      <div class="guarantees-content">
+        <div class="guarantee-item">
+          <div class="guarantee-icon">
+            <i class="fas fa-users"></i>
+          </div>
+          <div class="guarantee-text">
+            <h3 data-i18n="guarantees.reliable.title">Відповідальні та надійні виконавці</h3>
+            <p data-i18n="guarantees.reliable.description">Ми формуємо бригади майстрів, що складаються від 3 до 5 осіб. У виняткових випадках для прибирання великих об'єктів команда становить до 10 майстрів. Кожен з них при прийомі на роботу проходить сувору перевірку службою безпеки.</p>
+          </div>
+        </div>
+        
+        <div class="guarantee-item">
+          <div class="guarantee-icon">
+            <i class="fas fa-lock"></i>
+          </div>
+          <div class="guarantee-text">
+            <h3 data-i18n="guarantees.safety.title">Безпека</h3>
+            <p data-i18n="guarantees.safety.description">У штаті працюють відповідальні та порядні виконавці, тому ситуації пропажі або пошкодження майна повністю виключені. Однак при непередбачених обставинах ми готові компенсувати збитки та відшкодувати втрати.</p>
+          </div>
+        </div>
+        
+        <div class="guarantee-item">
+          <div class="guarantee-icon">
+            <i class="fas fa-handshake"></i>
+          </div>
+          <div class="guarantee-text">
+            <h3 data-i18n="guarantees.honesty.title">Чесність та прозорість</h3>
+            <p data-i18n="guarantees.honesty.description">Ми виконуємо роботу на високому рівні, надаючи гарантії якості. Мобільна бригада вчасно здає об'єкт і не завищує ціни на послуги, незалежно від ступеня складності виконаних завдань. Вартість роботи оголошується замовнику до того, як команда приступає до виконання.</p>
+          </div>
+        </div>
+        
+        <div class="guarantee-item">
+          <div class="guarantee-icon">
+            <i class="fas fa-star"></i>
+          </div>
+          <div class="guarantee-text">
+            <h3 data-i18n="guarantees.quality.title">Якість — понад усе</h3>
+            <p data-i18n="guarantees.quality.description">Кожен етап роботи контролюється старшим менеджером CleanPro, тому при прийнятті об'єкта клієнтом практично ніколи не виникає зауважень. Тим не менш у спірних ситуациях ми зобов'язуємося переробити роботу.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cleaning Steps -->
+  <section class="cleaning-steps">
+    <div class="container">
+      <h2 class="section-title" data-i18n="cleaning.title">Генеральне прибирання</h2>
+      <div class="steps-content">
+        <p data-i18n="cleaning.description">Залежно від ступеня забрудненості приміщення вам може знадобитися повне або часткове прибирання будинку та квартири. Генеральне прибирання — це комплекс завдань для створення ідеальної чистоти.</p>
+      </div>
+      
+      <div class="steps-grid">
+        <div class="step-item">
+          <h3><i class="fas fa-couch"></i> <span data-i18n="cleaning.livingroom.title">У житлових кімнатах</span></h3>
+          <ul>
+            <li data-i18n="cleaning.livingroom.item1">Усунення пилу та бруду з меблів</li>
+            <li data-i18n="cleaning.livingroom.item2">Миємо вікна, двері, підвіконня, фурнітуру</li>
+            <li data-i18n="cleaning.livingroom.item3">Очищення світильників, предметів інтер'єру</li>
+            <li data-i18n="cleaning.livingroom.item4">Промивання карнизів, жалюзі, кондиціонерів</li>
+          </ul>
+        </div>
+        
+        <div class="step-item">
+          <h3><i class="fas fa-utensils"></i> <span data-i18n="cleaning.kitchen.title">На кухні</span></h3>
+          <ul>
+            <li data-i18n="cleaning.kitchen.item1">Усунення пилу та бруду з кухонних побутових приладів</li>
+            <li data-i18n="cleaning.kitchen.item2">Миємо техніку зовні та всередині</li>
+            <li data-i18n="cleaning.kitchen.item3">Очищаємо духовки, варильні поверхні, витяжки</li>
+            <li data-i18n="cleaning.kitchen.item4">Миємо раковини та сантехнічні пристрої</li>
+          </ul>
+        </div>
+        
+        <div class="step-item">
+          <h3><i class="fas fa-bath"></i> <span data-i18n="cleaning.bathroom.title">У ванній кімнаті</span></h3>
+          <ul>
+            <li data-i18n="cleaning.bathroom.item1">Відмиваємо плитку від стелі до підлоги</li>
+            <li data-i18n="cleaning.bathroom.item2">Миємо душову кабіну, раковину, санвузол, ванну</li>
+            <li data-i18n="cleaning.bathroom.item3">Видаляємо іржу та грибковий наліт</li>
+            <li data-i18n="cleaning.bathroom.item4">Очищаємо побутові прилади від забруднень</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="testimonials" id="testimonials">
+    <div class="container">
+      <h2 class="section-title" data-i18n="testimonials.title">Що кажуть наші клієнти</h2>
+      <div class="testimonials-grid">
+        <div class="testimonial">
+          <div class="testimonial-text">
+            <p data-i18n="testimonials.testimonial1.text">Замовляла генеральне прибирання перед святами. Залишилася дуже задоволена! Все було виконано якісно та швидко. Обов'язково буду звертатися ще.</p>
+          </div>
+          <div class="testimonial-author">
+            <div class="author-avatar">
+              <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Олена">
+            </div>
+            <div class="author-details">
+              <h4 data-i18n="testimonials.testimonial1.author">Олена Коваль</h4>
+              <p data-i18n="testimonials.testimonial1.location">Київ</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="testimonial">
+          <div class="testimonial-text">
+            <p data-i18n="testimonials.testimonial2.text">Регулярно замовию прибирання офісу у цієї компанії. Професійний підхід, зручний графік та приємні ціни. Рекомендую!</p>
+          </div>
+          <div class="testimonial-author">
+            <div class="author-avatar">
+              <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Андрій">
+            </div>
+            <div class="author-details">
+              <h4 data-i18n="testimonials.testimonial2.author">Андрій Петренко</h4>
+              <p data-i18n="testimonials.testimonial2.position">Директор компанії</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="testimonial">
+          <div class="testimonial-text">
+            <p data-i18n="testimonials.testimonial3.text">Після ремонту замовили прибирання у CleanPro. Впоралися на відмінно! Всі будівельні сміття та пил були прибрані. Дякуємо!</p>
+          </div>
+          <div class="testimonial-author">
+            <div class="author-avatar">
+              <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Ірина">
+            </div>
+            <div class="author-details">
+              <h4 data-i18n="testimonials.testimonial3.author">Ірина Сидорова</h4>
+              <p data-i18n="testimonials.testimonial3.location">Київ</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq">
+    <div class="container">
+      <h2 class="section-title" data-i18n="faq.title">Поширені запитання</h2>
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <span data-i18n="faq.question1">Як довго триває прибирання?</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="accordion-content">
+            <p data-i18n="faq.answer1">Час прибирання залежить від площі приміщення та ступеня забрудненості. В середньому, прибирання квартири площею 50-70 м² займає 3-4 години.</p>
+          </div>
+        </div>
+        
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <span data-i18n="faq.question2">Чи потрібно надавати інвентар та засоби?</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="accordion-content">
+            <p data-i18n="faq.answer2">Ні, наші майстри привозять з собою все необхідне обладнання, інвентар та професійні засоби для прибирання. Ви можете не турбуватися про це.</p>
+          </div>
+        </div>
+        
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <span data-i18n="faq.question3">Чи є у вас страхування?</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="accordion-content">
+            <p data-i18n="faq.answer3">Так, ми маємо повне страхування відповідальності. У разі пошкодження майна (що майже неможливо), ми компенсуємо збитки.</p>
+          </div>
+        </div>
+        
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <span data-i18n="faq.question4">Як оплачувати послуги?</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="accordion-content">
+            <p data-i18n="faq.answer4">Оплата здійснюється після виконання роботи готівкою або переказом на картку. Ми надаємо всі необхідні документи для звітності.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta">
+    <div class="container">
+      <h2 data-i18n="cta.title">Готові до чистоти?</h2>
+      <p data-i18n="cta.description">Замовте прибирання вже сьогодні та отримайте знижку 10% на перше замовлення!</p>
+      <a href="#contact" class="btn" data-i18n="cta.button">Замовити послугу</a>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <h2 class="section-title" data-i18n="contact.title">Зв’яжіться з нами</h2>
+      <div class="contact-wrapper">
+        <div class="contact-info">
+          <h3 data-i18n="contact.info.title">Контактна інформація</h3>
+          <div class="contact-detail">
+            <div class="contact-icon">
+              <i class="fas fa-phone"></i>
+            </div>
+            <div class="contact-text">
+              <p><strong data-i18n="contact.info.phone">Телефон:</strong></p>
+              <p>+38 (099) 123-45-67</p>
+            </div>
+          </div>
+          
+          <div class="contact-detail">
+            <div class="contact-icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <div class="contact-text">
+              <p><strong data-i18n="contact.info.email">Email:</strong></p>
+              <p>info@cleanpro.ua</p>
+            </div>
+          </div>
+          
+          <div class="contact-detail">
+            <div class="contact-icon">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <div class="contact-text">
+              <p><strong data-i18n="contact.info.address">Адреса:</strong></p>
+              <p data-i18n="contact.info.addressValue">м. Київ, вул. Прибирання, 1</p>
+            </div>
+          </div>
+          
+          <div class="contact-detail">
+            <div class="contact-icon">
+              <i class="fas fa-clock"></i>
+            </div>
+            <div class="contact-text">
+              <p><strong data-i18n="contact.info.hours">Години роботи:</strong></p>
+              <p data-i18n="contact.info.hoursValue">Пн-Нд: 8:00-20:00</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="contact-form">
+          <h3 data-i18n="contact.form.title">Напишіть нам</h3>
+          <form id="contactForm">
+            <div class="form-group">
+              <label for="name" data-i18n="contact.form.name">Ім'я</label>
+              <input type="text" id="name" class="form-control" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="phone" data-i18n="contact.form.phone">Телефон</label>
+              <input type="tel" id="phone" class="form-control" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="email" data-i18n="contact.form.email">Email</label>
+              <input type="email" id="email" class="form-control" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="message" data-i18n="contact.form.message">Повідомлення</label>
+              <textarea id="message" class="form-control" required></textarea>
+            </div>
+            
+            <button type="submit" class="btn" data-i18n="contact.form.button">Відправити</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h3>CleanPro</h3>
+          <p data-i18n="footer.about">Ми створюємо чистоту та комфорт для вас. Професійні клінінгові послуги у Києві та області.</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-telegram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        
+        <div class="footer-col">
+          <h3 data-i18n="footer.services">Послуги</h3>
+          <a href="#" data-i18n="footer.service1">Генеральне прибирання</a>
+          <a href="#" data-i18n="footer.service2">Післяремонтне прибирання</a>
+          <a href="#" data-i18n="footer.service3">Щоденне прибирання</a>
+          <a href="#" data-i18n="footer.service4">Хімчистка меблів</a>
+          <a href="#" data-i18n="footer.service5">Миття вікон</a>
+        </div>
+        
+        <div class="footer-col">
+          <h3 data-i18n="footer.links">Посилання</h3>
+          <a href="#services" data-i18n="nav.services">Послуги</a>
+          <a href="#about" data-i18n="nav.about">Про нас</a>
+          <a href="#guarantees" data-i18n="nav.guarantees">Гарантії</a>
+          <a href="#testimonials" data-i18n="nav.testimonials">Відгуки</a>
+          <a href="#contact" data-i18n="nav.contact">Контакти</a>
+        </div>
+        
+        <div class="footer-col">
+          <h3 data-i18n="footer.contacts">Контакти</h3>
+          <p data-i18n="contact.info.addressValue">м. Київ, вул. Прибирання, 1</p>
+          <p>+38 (099) 123-45-67</p>
+          <p>info@cleanpro.ua</p>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2025 CleanPro. <span data-i18n="footer.rights">Всі права захищені.</span></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top -->
+  <a href="#" class="back-to-top" id="backToTop">
+    <i class="fas fa-arrow-up"></i>
+  </a>
+
+  <script>
+    // Мовні ресурси
+    const translations = {
+      uk: {
+        // Навігація
+        "nav.services": "Послуги",
+        "nav.about": "Про нас",
+        "nav.guarantees": "Гарантії",
+        "nav.testimonials": "Відгуки",
+        "nav.contact": "Контакти",
+        
+        // Герой
+        "hero.title": "Чистота — <span>наша місія</span>",
+        "hero.description": "Клінінгова компанія №1 у Києві. Ідеальна чистота у вашому домі — запорука гарного настрою, міцного здоров'я та високої працездатності.",
+        "hero.servicesBtn": "Наші послуги",
+        "hero.orderBtn": "Замовити",
+        
+        // Послуги
+        "services.title": "Наші послуги",
+        "services.eco.title": "Еко-засоби",
+        "services.eco.description": "Ми використовуємо лише безпечні та сертифіковані засоби, які не шкодять здоров'ю вашої родини та навколишньому середовищу.",
+        "services.fast.title": "Швидке прибирання",
+        "services.fast.description": "Працюємо оперативно без втрати якості. Наші спеціалісти знають, як ефективно прибирати навіть найскладніші забруднення.",
+        "services.guarantee.title": "Гарантія результату",
+        "services.guarantee.description": "Наша команда — професіонали з досвідом. Ми гарантуємо якість нашої роботи та вашого задоволення.",
+        
+        // Про нас
+        "about.title": "Про нас",
+        "about.text1": "CleanPro — команда експертів у сфері клінінгових послуг. Ми дбаємо про чистоту вашого простору, як про власний. Наш досвід та зосередженість на деталях роблять нас ідеальним вибором для вашого дому чи бізнесу.",
+        "about.text2": "Ми працюємо на ринку вже понад 5 років і маємо сотні задоволених клієнтів. Наша мета — не просто прибрати, а створити для вас комфортне та безпечне середовище.",
+        
+        // Додаткова інформація
+        "info.text1": "Якщo ви прагнете жити в затишку та комфорті, клінінгова компанія CleanPro пропонує якісний сервіс обслуговування клієнтів у м. Київ та Київській області.",
+        "info.text2": "Стартова ціна прибирання становить від 420 грн, що є важливим критерієм вибору підприємства, що надає клінінговий сервіс.",
+        "info.text3": "Клінінгові послуги нашої фірми — це професійний підхід мобільної бригади, яка виконує завдання швидко та відповідально. У заздалегідь обумовлений час ми виїдемо на об'єкт і проведемо всі необхідні роботи.",
+        
+        // Гарантії
+        "guarantees.title": "Що ми гарантуємо?",
+        "guarantees.reliable.title": "Відповідальні та надійні виконавці",
+        "guarantees.reliable.description": "Ми формуємо бригади майстрів, що складаються від 3 до 5 осіб. У виняткових випадках для прибирання великих об'єктів команда становить до 10 майстрів. Кожен з них при прийомі на роботу проходить сувору перевірку службою безпеки.",
+        "guarantees.safety.title": "Безпека",
+        "guarantees.safety.description": "У штаті працюють відповідальні та порядні виконавці, тому ситуації пропажі або пошкодження майна повністю виключені. Однак при непередбачених обставинах ми готові компенсувати збитки та відшкодувати втрати.",
+        "guarantees.honesty.title": "Чесність та прозорість",
+        "guarantees.honesty.description": "Ми виконуємо роботу на високому рівні, надаючи гарантії якості. Мобільна бригада вчасно здає об'єкт і не завищує ціни на послуги, незалежно від ступеня складності виконаних завдань. Вартість роботи оголошується замовнику до того, як команда приступає до виконання.",
+        "guarantees.quality.title": "Якість — понад усе",
+        "guarantees.quality.description": "Кожен етап роботи контролюється старшим менеджером CleanPro, тому при прийнятті об'єкта клієнтом практично ніколи не виникає зауважень. Тим не менш у спірних ситуациях ми зобов'язуємося переробити роботу.",
+        
+        // Прибирання
+        "cleaning.title": "Генеральне прибирання",
+        "cleaning.description": "Залежно від ступеня забрудненості приміщення вам може знадобитися повне або часткове прибирання будинку та квартири. Генеральне прибирання — це комплекс завдань для створення ідеальної чистоти.",
+        "cleaning.livingroom.title": "У житлових кімнатах",
+        "cleaning.livingroom.item1": "Усунення пилу та бруду з меблів",
+        "cleaning.livingroom.item2": "Миємо вікна, двері, підвіконня, фурнітуру",
+        "cleaning.livingroom.item3": "Очищення світильників, предметів інтер'єру",
+        "cleaning.livingroom.item4": "Промивання карнизів, жалюзі, кондиціонерів",
+        "cleaning.kitchen.title": "На кухні",
+        "cleaning.kitchen.item1": "Усунення пилу та бруду з кухонних побутових приладів",
+        "cleaning.kitchen.item2": "Миємо техніку зовні та всередині",
+        "cleaning.kitchen.item3": "Очищаємо духовки, варильні поверхні, витяжки",
+        "cleaning.kitchen.item4": "Миємо раковини та сантехнічні пристрої",
+        "cleaning.bathroom.title": "У ванній кімнаті",
+        "cleaning.bathroom.item1": "Відмиваємо плитку від стелі до підлоги",
+        "cleaning.bathroom.item2": "Миємо душову кабіну, раковину, санвузол, ванну",
+        "cleaning.bathroom.item3": "Видаляємо іржу та грибковий наліт",
+        "cleaning.bathroom.item4": "Очищаємо побутові прилади від забруднень",
+        
+        // Відгуки
+        "testimonials.title": "Що кажуть наші клієнти",
+        "testimonials.testimonial1.text": "Замовляла генеральне прибирання перед святами. Залишилася дуже задоволена! Все було виконано якісно та швидко. Обов'язково буду звертатися ще.",
+        "testimonials.testimonial1.author": "Олена Коваль",
+        "testimonials.testimonial1.location": "Київ",
+        "testimonials.testimonial2.text": "Регулярно замовию прибирання офісу у цієї компанії. Професійний підхід, зручний графік та приємні ціни. Рекомендую!",
+        "testimonials.testimonial2.author": "Андрій Петренко",
+        "testimonials.testimonial2.position": "Директор компанії",
+        "testimonials.testimonial3.text": "Після ремонту замовили прибирання у CleanPro. Впоралися на відмінно! Всі будівельні сміття та пил були прибрані. Дякуємо!",
+        "testimonials.testimonial3.author": "Ірина Сидорова",
+        "testimonials.testimonial3.location": "Київ",
+        
+        // FAQ
+        "faq.title": "Поширені запитання",
+        "faq.question1": "Як довго триває прибирання?",
+        "faq.answer1": "Час прибирання залежить від площі приміщення та ступеня забрудненості. В середньому, прибирання квартири площею 50-70 м² займає 3-4 години.",
+        "faq.question2": "Чи потрібно надавати інвентар та засоби?",
+        "faq.answer2": "Ні, наші майстри привозять з собою все необхідне обладнання, інвентар та професійні засоби для прибирання. Ви можете не турбуватися про це.",
+        "faq.question3": "Чи є у вас страхування?",
+        "faq.answer3": "Так, ми маємо повне страхування відповідальності. У разі пошкодження майна (що майже неможливо), ми компенсуємо збитки.",
+        "faq.question4": "Як оплачувати послуги?",
+        "faq.answer4": "Оплата здійснюється після виконання роботи готівкою або переказом на картку. Ми надаємо всі необхідні документи для звітності.",
+        
+        // CTA
+        "cta.title": "Готові до чистоти?",
+        "cta.description": "Замовте прибирання вже сьогодні та отримайте знижку 10% на перше замовлення!",
+        "cta.button": "Замовити послугу",
+        
+        // Контакти
+        "contact.title": "Зв’яжіться з нами",
+        "contact.info.title": "Контактна інформація",
+        "contact.info.phone": "Телефон:",
+        "contact.info.email": "Email:",
+        "contact.info.address": "Адреса:",
+        "contact.info.addressValue": "м. Київ, вул. Прибирання, 1",
+        "contact.info.hours": "Години роботи:",
+        "contact.info.hoursValue": "Пн-Нд: 8:00-20:00",
+        "contact.form.title": "Напишіть нам",
+        "contact.form.name": "Ім'я",
+        "contact.form.phone": "Телефон",
+        "contact.form.email": "Email",
+        "contact.form.message": "Повідомлення",
+        "contact.form.button": "Відправити",
+        
+        // Футер
+        "footer.about": "Ми створюємо чистоту та комфорт для вас. Професійні клінінгові послуги у Києві та області.",
+        "footer.services": "Послуги",
+        "footer.service1": "Генеральне прибирання",
+        "footer.service2": "Післяремонтне прибирання",
+        "footer.service3": "Щоденне прибирання",
+        "footer.service4": "Хімчистка меблів",
+        "footer.service5": "Миття вікон",
+        "footer.links": "Посилання",
+        "footer.contacts": "Контакти",
+        "footer.rights": "Всі права захищені."
+      },
+      en: {
+        // Навігація
+        "nav.services": "Services",
+        "nav.about": "About Us",
+        "nav.guarantees": "Guarantees",
+        "nav.testimonials": "Testimonials",
+        "nav.contact": "Contact",
+        
+        // Герой
+        "hero.title": "Cleanliness — <span>Our Mission</span>",
+        "hero.description": "Cleaning company №1 in Kyiv. Perfect cleanliness in your home is the key to good mood, strong health and high performance.",
+        "hero.servicesBtn": "Our Services",
+        "hero.orderBtn": "Order Now",
+        
+        // Послуги
+        "services.title": "Our Services",
+        "services.eco.title": "Eco-Friendly Products",
+        "services.eco.description": "We use only safe and certified products that do not harm your family's health and the environment.",
+        "services.fast.title": "Fast Cleaning",
+        "services.fast.description": "We work quickly without losing quality. Our specialists know how to effectively clean even the most difficult stains.",
+        "services.guarantee.title": "Result Guarantee",
+        "services.guarantee.description": "Our team is experienced professionals. We guarantee the quality of our work and your satisfaction.",
+        
+        // Про нас
+        "about.title": "About Us",
+        "about.text1": "CleanPro is a team of experts in the field of cleaning services. We care about the cleanliness of your space as if it were our own. Our experience and attention to detail make us the perfect choice for your home or business.",
+        "about.text2": "We have been on the market for over 5 years and have hundreds of satisfied customers. Our goal is not just to clean, but to create a comfortable and safe environment for you.",
+        
+        // Додаткова інформація
+        "info.text1": "If you strive to live in comfort and coziness, the cleaning company CleanPro offers quality customer service in Kyiv and Kyiv region.",
+        "info.text2": "The starting price for cleaning is from 420 UAH, which is an important criterion for choosing a company that provides cleaning services.",
+        "info.text3": "Our company's cleaning services are a professional approach of a mobile team that performs tasks quickly and responsibly. At the prearranged time, we will go to the facility and carry out all the necessary work.",
+        
+        // Гарантії
+        "guarantees.title": "What Do We Guarantee?",
+        "guarantees.reliable.title": "Responsible and Reliable Performers",
+        "guarantees.reliable.description": "We form teams of masters consisting of 3 to 5 people. In exceptional cases, for cleaning large facilities, the team consists of up to 10 masters. Each of them undergoes a strict security check when hired.",
+        "guarantees.safety.title": "Safety",
+        "guarantees.safety.description": "The staff consists of responsible and honest performers, so situations of loss or damage to property are completely excluded. However, in unforeseen circumstances, we are ready to compensate for damages and reimburse losses.",
+        "guarantees.honesty.title": "Honesty and Transparency",
+        "guarantees.honesty.description": "We perform work at a high level, providing quality guarantees. The mobile team delivers the object on time and does not inflate prices for services, regardless of the complexity of the tasks performed. The cost of work is announced to the customer before the team starts work.",
+        "guarantees.quality.title": "Quality Above All",
+        "guarantees.quality.description": "Each stage of work is controlled by the senior manager of CleanPro, so when the client accepts the object, there are practically no comments. Nevertheless, in controversial situations, we undertake to redo the work.",
+        
+        // Прибирання
+        "cleaning.title": "General Cleaning",
+        "cleaning.description": "Depending on the degree of contamination of the premises, you may need a complete or partial cleaning of the house and apartment. General cleaning is a set of tasks to create perfect cleanliness.",
+        "cleaning.livingroom.title": "In Living Rooms",
+        "cleaning.livingroom.item1": "Removing dust and dirt from furniture",
+        "cleaning.livingroom.item2": "Washing windows, doors, window sills, fittings",
+        "cleaning.livingroom.item3": "Cleaning lamps, interior items",
+        "cleaning.livingroom.item4": "Flushing cornices, blinds, air conditioners",
+        "cleaning.kitchen.title": "In the Kitchen",
+        "cleaning.kitchen.item1": "Removing dust and dirt from kitchen appliances",
+        "cleaning.kitchen.item2": "Washing equipment outside and inside",
+        "cleaning.kitchen.item3": "Cleaning ovens, cooking surfaces, hoods",
+        "cleaning.kitchen.item4": "Washing sinks and plumbing fixtures",
+        "cleaning.bathroom.title": "In the Bathroom",
+        "cleaning.bathroom.item1": "Washing tiles from ceiling to floor",
+        "cleaning.bathroom.item2": "Washing shower cabin, sink, toilet, bath",
+        "cleaning.bathroom.item3": "Removing rust and fungal deposits",
+        "cleaning.bathroom.item4": "Cleaning household appliances from contamination",
+        
+        // Відгуки
+        "testimonials.title": "What Our Clients Say",
+        "testimonials.testimonial1.text": "I ordered a general cleaning before the holidays. I was very satisfied! Everything was done with quality and quickly. I will definitely contact you again.",
+        "testimonials.testimonial1.author": "Olena Koval",
+        "testimonials.testimonial1.location": "Kyiv",
+        "testimonials.testimonial2.text": "I regularly order office cleaning from this company. Professional approach, convenient schedule and pleasant prices. I recommend!",
+        "testimonials.testimonial2.author": "Andriy Petrenko",
+        "testimonials.testimonial2.position": "Company Director",
+        "testimonials.testimonial3.text": "After the renovation, we ordered cleaning from CleanPro. They did an excellent job! All construction debris and dust were removed. Thank you!",
+        "testimonials.testimonial3.author": "Iryna Sydorova",
+        "testimonials.testimonial3.location": "Kyiv",
+        
+        // FAQ
+        "faq.title": "Frequently Asked Questions",
+        "faq.question1": "How long does the cleaning take?",
+        "faq.answer1": "The cleaning time depends on the area of the premises and the degree of contamination. On average, cleaning an apartment with an area of 50-70 m² takes 3-4 hours.",
+        "faq.question2": "Do I need to provide inventory and products?",
+        "faq.answer2": "No, our masters bring all the necessary equipment, inventory and professional cleaning products with them. You don't have to worry about it.",
+        "faq.question3": "Do you have insurance?",
+        "faq.answer3": "Yes, we have full liability insurance. In case of property damage (which is almost impossible), we will compensate for the damage.",
+        "faq.question4": "How to pay for services?",
+        "faq.answer4": "Payment is made after the work is completed in cash or by transfer to the card. We provide all necessary documents for reporting.",
+        
+        // CTA
+        "cta.title": "Ready for Cleanliness?",
+        "cta.description": "Order cleaning today and get a 10% discount on your first order!",
+        "cta.button": "Order Service",
+        
+        // Контакти
+        "contact.title": "Contact Us",
+        "contact.info.title": "Contact Information",
+        "contact.info.phone": "Phone:",
+        "contact.info.email": "Email:",
+        "contact.info.address": "Address:",
+        "contact.info.addressValue": "Kyiv, Cleaning St, 1",
+        "contact.info.hours": "Working Hours:",
+        "contact.info.hoursValue": "Mon-Sun: 8:00-20:00",
+        "contact.form.title": "Write to Us",
+        "contact.form.name": "Name",
+        "contact.form.phone": "Phone",
+        "contact.form.email": "Email",
+        "contact.form.message": "Message",
+        "contact.form.button": "Send",
+        
+        // Футер
+        "footer.about": "We create cleanliness and comfort for you. Professional cleaning services in Kyiv and the region.",
+        "footer.services": "Services",
+        "footer.service1": "General cleaning",
+        "footer.service2": "Post-renovation cleaning",
+        "footer.service3": "Daily cleaning",
+        "footer.service4": "Furniture dry cleaning",
+        "footer.service5": "Window washing",
+        "footer.links": "Links",
+        "footer.contacts": "Contacts",
+        "footer.rights": "All rights reserved."
+      },
+      pl: {
+        // Навігація
+        "nav.services": "Usługi",
+        "nav.about": "O nas",
+        "nav.guarantees": "Gwarancje",
+        "nav.testimonials": "Opinie",
+        "nav.contact": "Kontakt",
+        
+        // Герой
+        "hero.title": "Czystość — <span>nasza misja</span>",
+        "hero.description": "Firma sprzątająca nr 1 w Kijowie. Idealna czystość w Twoim domu to klucz do dobrego nastroju, silnego zdrowia i wysokiej wydajności.",
+        "hero.servicesBtn": "Nasze usługi",
+        "hero.orderBtn": "Zamów",
+        
+        // Послуги
+        "services.title": "Nasze usługi",
+        "services.eco.title": "Środki ekologiczne",
+        "services.eco.description": "Używamy tylko bezpiecznych i certyfikowanych produktów, które nie szkodzą zdrowiu Twojej rodziny i środowisku.",
+        "services.fast.title": "Szybkie sprzątanie",
+        "services.fast.description": "Pracujemy szybko bez utraty jakości. Nasi specjaliści wiedzą, jak skutecznie czyścić nawet najtrudniejsze zabrudzenia.",
+        "services.guarantee.title": "Gwarancja wyniku",
+        "services.guarantee.description": "Nasz zespół to doświadczeni profesjonaliści. Gwarantujemy jakość naszej pracy i Twoje zadowolenie.",
+        
+        // Про нас
+        "about.title": "O nas",
+        "about.text1": "CleanPro to zespół ekspertów w dziedzinie usług sprzątania. Dbamy o czystość Twojej przestrzeni jak o własną. Nasze doświadczenie i skupienie na szczegółach czynią nas idealnym wyborem dla Twojego domu lub biznesu.",
+        "about.text2": "Działamy na rynku od ponad 5 lat i mamy setki zadowolonych klientów. Naszym celem jest nie tylko sprzątanie, ale tworzenie komfortowego i bezpiecznego środowiska dla Ciebie.",
+        
+        // Додаткова інформація
+        "info.text1": "Jeśli chcesz żyć w komforcie i przytulności, firma sprzątająca CleanPro oferuje wysokiej jakości obsługę klienta w Kijowie i obwodzie kijowskim.",
+        "info.text2": "Cena wyjściowa sprzątania wynosi od 420 UAH, co jest ważnym kryterium wyboru przedsiębiorstwa świadczącego usługi sprzątania.",
+        "info.text3": "Usługi sprzątania naszej firmy to profesjonalne podejście mobilnej brygady, która wykonuje zadania szybko i odpowiedzialnie. W uzgodnionym terminie przyjedziemy na obiekt i wykonamy wszystkie niezbędne prace.",
+        
+        // Гарантії
+        "guarantees.title": "Co gwarantujemy?",
+        "guarantees.reliable.title": "Odpowiedzialni i niezawodni wykonawcy",
+        "guarantees.reliable.description": "Tworzymy brygady mistrzów składające się z 3 do 5 osób. W wyjątkowych przypadkach do sprzątania dużych obiektów zespół liczy do 10 mistrzów. Każdy z nich przechodzi rygorystyczną kontrolę bezpieczeństwa przy zatrudnieniu.",
+        "guarantees.safety.title": "Bezpieczeństwo",
+        "guarantees.safety.description": "W kadrze pracują odpowiedzialni i uczciwi wykonawcy, więc sytuacje zagubienia lub uszkodzenia mienia są całkowicie wykluczone. Jednak w nieprzewidzianych okolicznościach jesteśmy gotowi zrekompensować szkody i zwrócić straty.",
+        "guarantees.honesty.title": "Uczciwość i przejrzystość",
+        "guarantees.honesty.description": "Wykonujemy pracę na wysokim poziomie, zapewniając gwarancje jakości. Mobilna brygada oddaje obiekt na czas i nie zawyża cen usług, niezależnie od stopnia złożoności wykonanych zadań. Koszt pracy jest ogłaszany klientowi przed rozpoczęciem pracy przez zespół.",
+        "guarantees.quality.title": "Jakość ponad wszystko",
+        "guarantees.quality.description": "Każdy etap pracy jest kontrolowany przez starszego menedżera CleanPro, więc przy odbiorze obiektu przez klienta praktycznie nie ma uwag. Niemniej jednak w kontrowersyjnych sytuacjach zobowiązujemy się przerobić pracę.",
+        
+        // Прибирання
+        "cleaning.title": "Generalne sprzątanie",
+        "cleaning.description": "W zależności od stopnia zanieczyszczenia pomieszczenia możesz potrzebować pełnego lub częściowego sprzątania domu i mieszkania. Generalne sprzątanie to zestaw zadań do stworzenia idealnej czystości.",
+        "cleaning.livingroom.title": "W pokojach mieszkalnych",
+        "cleaning.livingroom.item1": "Usuwanie kurzu i brudu z mebli",
+        "cleaning.livingroom.item2": "Mycie okien, drzwi, parapetów, okuć",
+        "cleaning.livingroom.item3": "Czyszczenie lamp, przedmiotów dekoracyjnych",
+        "cleaning.livingroom.item4": "Płukanie karniszy, żaluzji, klimatyzatorów",
+        "cleaning.kitchen.title": "W kuchni",
+        "cleaning.kitchen.item1": "Usuwanie kurzu i brudu z urządzeń kuchennych",
+        "cleaning.kitchen.item2": "Mycie urządzeń na zewnątrz i wewnątrz",
+        "cleaning.kitchen.item3": "Czyszczenie piekarników, powierzchni kuchennych, okapów",
+        "cleaning.kitchen.item4": "Mycie zlewów i urządzeń sanitarnych",
+        "cleaning.bathroom.title": "W łazience",
+        "cleaning.bathroom.item1": "Zmywanie płytek od sufitu do podłogi",
+        "cleaning.bathroom.item2": "Mycie kabiny prysznicowej, umywalki, toalety, wanny",
+        "cleaning.bathroom.item3": "Usuwanie rdzy i nalotu grzybowego",
+        "cleaning.bathroom.item4": "Czyszczenie urządzeń gospodarstwa domowego od zanieczyszczeń",
+        
+        // Відгуки
+        "testimonials.title": "Co mówią nasi klienci",
+        "testimonials.testimonial1.text": "Zamówiłam generalne sprzątanie przed świętami. Byłam bardzo zadowolona! Wszystko zostało wykonane jakościowo i szybko. Na pewno jeszcze się zwrócę.",
+        "testimonials.testimonial1.author": "Olena Koval",
+        "testimonials.testimonial1.location": "Kijów",
+        "testimonials.testimonial2.text": "Regularnie zamawiam sprzątanie biura u tej firmy. Profesjonalne podejście, wygodny grafik i przyjemne ceny. Polecam!",
+        "testimonials.testimonial2.author": "Andrij Petrenko",
+        "testimonials.testimonial2.position": "Dyrektor firmy",
+        "testimonials.testimonial3.text": "Po remoncie zamówiliśmy sprzątanie u CleanPro. Poradzili sobie doskonale! Wszystkie odpady budowlane i pył zostały usunięte. Dziękujemy!",
+        "testimonials.testimonial3.author": "Iryna Sydorova",
+        "testimonials.testimonial3.location": "Kijów",
+        
+        // FAQ
+        "faq.title": "Często zadawane pytania",
+        "faq.question1": "Jak długo trwa sprzątanie?",
+        "faq.answer1": "Czas sprzątania zależy od powierzchni pomieszczenia i stopnia zabrudzenia. Średnio sprzątanie mieszkania o powierzchni 50-70 m² trwa 3-4 godziny.",
+        "faq.question2": "Czy trzeba zapewnić sprzęt i środki?",
+        "faq.answer2": "Nie, nasi mistrzowie przywożą ze sobą cały niezbędny sprzęt, inwentarz i profesjonalne środki do sprzątania. Nie musisz się o to martwić.",
+        "faq.question3": "Czy macie ubezpieczenie?",
+        "faq.answer3": "Tak, mamy pełne ubezpieczenie odpowiedzialności. W przypadku uszkodzenia mienia (co jest prawie niemożliwe), odszkodujemy szkody.",
+        "faq.question4": "Jak płacić za usługi?",
+        "faq.answer4": "Płatność odbywa się po wykonaniu pracy gotówką lub przelewem na kartę. Zapewniamy wszystkie niezbędne dokumenty do raportowania.",
+        
+        // CTA
+        "cta.title": "Gotowy na czystość?",
+        "cta.description": "Zamów sprzątanie już dziś i uzyskaj 10% zniżki na pierwsze zamówienie!",
+        "cta.button": "Zamów usługę",
+        
+        // Контакти
+        "contact.title": "Skontaktuj się z nami",
+        "contact.info.title": "Informacje kontaktowe",
+        "contact.info.phone": "Telefon:",
+        "contact.info.email": "Email:",
+        "contact.info.address": "Adres:",
+        "contact.info.addressValue": "Kijów, ul. Sprzątanie, 1",
+        "contact.info.hours": "Godziny pracy:",
+        "contact.info.hoursValue": "Pn-Nd: 8:00-20:00",
+        "contact.form.title": "Napisz do nas",
+        "contact.form.name": "Imię",
+        "contact.form.phone": "Telefon",
+        "contact.form.email": "Email",
+        "contact.form.message": "Wiadomość",
+        "contact.form.button": "Wyślij",
+        
+        // Футер
+        "footer.about": "Tworzymy czystość i komfort dla Ciebie. Profesjonalne usługi sprzątania w Kijowie i regionie.",
+        "footer.services": "Usługi",
+        "footer.service1": "Generalne sprzątanie",
+        "footer.service2": "Sprzątanie po remoncie",
+        "footer.service3": "Codzienne sprzątanie",
+        "footer.service4": "Czyszczenie mebli",
+        "footer.service5": "Mycie okien",
+        "footer.links": "Linki",
+        "footer.contacts": "Kontakty",
+        "footer.rights": "Wszystkie prawa zastrzeżone."
+      }
+    };
+
+    document.addEventListener("DOMContentLoaded", () => {
+      // Встановлення мови за замовчуванням
+      let currentLanguage = 'uk';
+      const savedLanguage = localStorage.getItem('language');
+      
+      if (savedLanguage) {
+        currentLanguage = savedLanguage;
+      } else {
+        // Автовизначення мови браузера
+        const browserLang = navigator.language.substring(0, 2);
+        if (translations[browserLang]) {
+          currentLanguage = browserLang;
+        }
+      }
+      
+      // Функція для зміни мови
+      function setLanguage(lang) {
+        if (!translations[lang]) return;
+        
+        currentLanguage = lang;
+        localStorage.setItem('language', lang);
+        
+        // Оновлення тексту на сторінці
+        document.querySelectorAll('[data-i18n]').forEach(element => {
+          const key = element.getAttribute('data-i18n');
+          if (translations[lang][key]) {
+            if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+              element.placeholder = translations[lang][key];
+            } else {
+              element.innerHTML = translations[lang][key];
+            }
+          }
+        });
+        
+        // Оновлення індикатора поточної мови
+        document.getElementById('currentLanguage').textContent = 
+          lang === 'uk' ? 'Укр' : lang === 'en' ? 'Eng' : 'Pol';
+        
+        // Оновлення атрибута lang для доступності
+        document.documentElement.lang = lang;
+      }
+      
+      // Ініціалізація мови
+      setLanguage(currentLanguage);
+      
+      // Обробник для перемикача мов
+      const languageBtn = document.getElementById('languageBtn');
+      const languageOptions = document.getElementById('languageOptions');
+      
+      languageBtn.addEventListener('click', () => {
+        languageOptions.classList.toggle('active');
+      });
+      
+      document.querySelectorAll('.language-option').forEach(option => {
+        option.addEventListener('click', () => {
+          const lang = option.getAttribute('data-lang');
+          setLanguage(lang);
+          languageOptions.classList.remove('active');
+        });
+      });
+      
+      // Закриття випадаючого списку при кліку поза ним
+      document.addEventListener('click', (e) => {
+        if (!languageBtn.contains(e.target) && !languageOptions.contains(e.target)) {
+          languageOptions.classList.remove('active');
+        }
+      });
+      
+      // Mobile Navigation
+      const navToggle = document.getElementById('navToggle');
+      const nav = document.getElementById('nav');
+      
+      navToggle.addEventListener('click', () => {
+        nav.classList.toggle('active');
+        navToggle.innerHTML = nav.classList.contains('active') ? 
+          '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+      });
+      
+      // Header scroll effect
+      const header = document.getElementById('header');
+      
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 100) {
+          header.classList.add('scrolled');
+        } else {
+          header.classList.remove('scrolled');
+        }
+      });
+      
+      // Back to top button
+      const backToTop = document.getElementById('backToTop');
+      
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 500) {
+          backToTop.classList.add('visible');
+        } else {
+          backToTop.classList.remove('visible');
+        }
+      });
+      
+      backToTop.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+      
+      // Accordion functionality
+      const accordionHeaders = document.querySelectorAll('.accordion-header');
+      
+      accordionHeaders.forEach(header => {
+        header.addEventListener('click', () => {
+          const content = header.nextElementSibling;
+          const isActive = content.classList.contains('active');
+          
+          // Close all accordion items
+          document.querySelectorAll('.accordion-content').forEach(item => {
+            item.classList.remove('active');
+          });
+          
+          document.querySelectorAll('.accordion-header i').forEach(icon => {
+            icon.style.transform = 'rotate(0deg)';
+          });
+          
+          // Open clicked item if it was closed
+          if (!isActive) {
+            content.classList.add('active');
+            header.querySelector('i').style.transform = 'rotate(180deg)';
+          }
+        });
+      });
+      
+      // Form submission
+      const contactForm = document.getElementById('contactForm');
+      
+      if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          alert(currentLanguage === 'uk' ? 'Дякуємо за ваше повідомлення! Ми зв\'яжемося з вами найближчим часом.' :
+                currentLanguage === 'en' ? 'Thank you for your message! We will contact you soon.' :
+                'Dziękujemy za wiadomość! Skontaktujemy się z Tobą wkrótce.');
+          contactForm.reset();
+        });
+      }
+      
+      // Intersection Observer for animations
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      }, { threshold: 0.1 });
+
+      document.querySelectorAll('.feature, .about, .additional-info, .guarantee-item, .step-item, .testimonial, .accordion-item, .contact-info, .contact-form').forEach(el => {
+        el.classList.add('hidden');
+        observer.observe(el);
+      });
+
+      // Smooth scrolling for navigation links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+          const targetId = this.getAttribute('href');
+          
+          if (targetId === '#') return;
+          
+          const targetElement = document.querySelector(targetId);
+          
+          if (targetElement) {
+            // Close mobile menu if open
+            if (nav.classList.contains('active')) {
+              nav.classList.remove('active');
+              navToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            }
+            
+            window.scrollTo({
+              top: targetElement.offsetTop - 100,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+    });
+  </script>
 </body>
-</html>
