@@ -167,6 +167,184 @@
       cursor: pointer;
       color: var(--text);
     }
+    
+    /* Calculator Styles */
+    .calculator {
+      padding: 100px 0;
+      background: var(--light);
+    }
+    
+    .calculator h2 {
+      text-align: center;
+      margin-bottom: 50px;
+      font-size: 2.5rem;
+      color: var(--primary);
+      position: relative;
+      padding-bottom: 15px;
+    }
+    
+    .calculator h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: var(--primary);
+      border-radius: 2px;
+    }
+    
+    .calculator-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      margin-top: 30px;
+    }
+    
+    @media (max-width: 992px) {
+      .calculator-wrapper {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    .calculator-form {
+      background: var(--white);
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: var(--shadow);
+    }
+    
+    .calculator-result {
+      background: var(--white);
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    
+    .calculator-result.highlight {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: var(--white);
+    }
+    
+    .result-price {
+      font-size: 3rem;
+      font-weight: bold;
+      margin: 20px 0;
+      color: var(--primary);
+    }
+    
+    .calculator-result.highlight .result-price {
+      color: var(--white);
+    }
+    
+    .result-details {
+      margin-top: 20px;
+      text-align: left;
+      width: 100%;
+    }
+    
+    .result-details ul {
+      padding-left: 20px;
+    }
+    
+    .result-details li {
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+    }
+    
+    .calculator-result.highlight .result-details {
+      color: var(--white);
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+    
+    .form-control {
+      width: 100%;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 16px;
+      transition: var(--transition);
+    }
+    
+    .form-control:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(0, 184, 148, 0.2);
+    }
+    
+    .range-container {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    
+    .range-value {
+      min-width: 50px;
+      text-align: center;
+      font-weight: bold;
+      color: var(--primary);
+    }
+    
+    input[type="range"] {
+      flex: 1;
+      -webkit-appearance: none;
+      height: 8px;
+      border-radius: 4px;
+      background: #ddd;
+      outline: none;
+    }
+    
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--primary);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    
+    input[type="range"]::-webkit-slider-thumb:hover {
+      background: var(--primary-dark);
+      transform: scale(1.1);
+    }
+    
+    .checkbox-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+    
+    .checkbox-group input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--primary);
+    }
+    
+    .calculator-note {
+      margin-top: 20px;
+      font-style: italic;
+      color: var(--text-light);
+      text-align: center;
+    }
 
     /* Hero */
     .hero {
@@ -1122,6 +1300,77 @@
       </div>
     </div>
   </section>
+  
+  <section class="calculator" id="calculator">
+    <div class="container">
+      <h2 class="section-title" data-i18n="calculator.title">Розрахувати вартість</h2>
+      <div class="calculator-wrapper">
+        <div class="calculator-form">
+          <div class="form-group">
+            <label for="area" data-i18n="calculator.area">Площа приміщення (м²)</label>
+            <div class="range-container">
+              <input type="range" id="area" min="20" max="200" value="50" step="5">
+              <span class="range-value" id="areaValue">50</span>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="cleaningType" data-i18n="calculator.cleaningType">Тип прибирання</label>
+            <select id="cleaningType" class="form-control">
+              <option value="regular" data-i18n="calculator.regular">Підтримувальне прибирання</option>
+              <option value="general" data-i18n="calculator.general">Генеральне прибирання</option>
+              <option value="afterRenovation" data-i18n="calculator.afterRenovation">Післяремонтне прибирання</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label data-i18n="calculator.extras">Додаткові послуги</label>
+            <div class="checkbox-group">
+              <input type="checkbox" id="windowCleaning" value="windowCleaning">
+              <label for="windowCleaning" data-i18n="calculator.windowCleaning">Миття вікон</label>
+            </div>
+            <div class="checkbox-group">
+              <input type="checkbox" id="furnitureCleaning" value="furnitureCleaning">
+              <label for="furnitureCleaning" data-i18n="calculator.furnitureCleaning">Хімчистка меблів</label>
+            </div>
+            <div class="checkbox-group">
+              <input type="checkbox" id="carpetCleaning" value="carpetCleaning">
+              <label for="carpetCleaning" data-i18n="calculator.carpetCleaning">Чистка килимів</label>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="frequency" data-i18n="calculator.frequency">Періодичність</label>
+            <select id="frequency" class="form-control">
+              <option value="once" data-i18n="calculator.once">Одноразово</option>
+              <option value="weekly" data-i18n="calculator.weekly">Щотижня</option>
+              <option value="biweekly" data-i18n="calculator.biweekly">Раз на 2 тижні</option>
+              <option value="monthly" data-i18n="calculator.monthly">Щомісяця</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="calculator-result" id="calculatorResult">
+          <h3 data-i18n="calculator.resultTitle">Орієнтовна вартість</h3>
+          <div class="result-price" id="resultPrice">1 250 грн</div>
+          <p data-i18n="calculator.resultDescription">Ця ціна є орієнтовною. Точну вартість ми розрахуємо після огляду приміщення.</p>
+          
+          <div class="result-details">
+            <ul id="resultDetails">
+              <li><span data-i18n="calculator.detailArea">Площа:</span> <span>50 м²</span></li>
+              <li><span data-i18n="calculator.detailType">Тип прибирання:</span> <span>Підтримувальне</span></li>
+              <li><span data-i18n="calculator.detailExtras">Додаткові послуги:</span> <span>Немає</span></li>
+              <li><span data-i18n="calculator.detailFrequency">Періодичність:</span> <span>Одноразово</span></li>
+            </ul>
+          </div>
+          
+          <a href="#contact" class="btn" style="margin-top: 20px;" data-i18n="calculator.orderBtn">Замовити за цим розрахунком</a>
+        </div>
+      </div>
+      
+      <p class="calculator-note" data-i18n="calculator.note">* Мінімальна вартість прибирання - 420 грн. При замовленні щотижневого прибирання надається знижка 10%.</p>
+    </div>
+  </section>
 
   <!-- Cleaning Steps -->
   <section class="cleaning-steps">
@@ -1471,6 +1720,31 @@
         "cleaning.bathroom.item3": "Видаляємо іржу та грибковий наліт",
         "cleaning.bathroom.item4": "Очищаємо побутові прилади від забруднень",
         
+        // Calculator
+        "calculator.title": "Розрахувати вартість",
+        "calculator.area": "Площа приміщення (м²)",
+        "calculator.cleaningType": "Тип прибирання",
+        "calculator.regular": "Підтримувальне прибирання",
+        "calculator.general": "Генеральне прибирання",
+        "calculator.afterRenovation": "Післяремонтне прибирання",
+        "calculator.extras": "Додаткові послуги",
+        "calculator.windowCleaning": "Миття вікон",
+        "calculator.furnitureCleaning": "Хімчистка меблів",
+        "calculator.carpetCleaning": "Чистка килимів",
+        "calculator.frequency": "Періодичність",
+        "calculator.once": "Одноразово",
+        "calculator.weekly": "Щотижня",
+        "calculator.biweekly": "Раз на 2 тижні",
+        "calculator.monthly": "Щомісяця",
+        "calculator.resultTitle": "Орієнтовна вартість",
+        "calculator.resultDescription": "Ця ціна є орієнтовною. Точну вартість ми розрахуємо після огляду приміщення.",
+        "calculator.detailArea": "Площа:",
+        "calculator.detailType": "Тип прибирання:",
+        "calculator.detailExtras": "Додаткові послуги:",
+        "calculator.detailFrequency": "Періодичність:",
+        "calculator.orderBtn": "Замовити за цим розрахунком",
+        "calculator.note": "* Мінімальна вартість прибирання - 420 грн. При замовленні щотижневого прибирання надається знижка 10%.",
+        
         // Відгуки
         "testimonials.title": "Що кажуть наші клієнти",
         "testimonials.testimonial1.text": "Замовляла генеральне прибирання перед святами. Залишилася дуже задоволена! Все було виконано якісно та швидко. Обов'язково буду звертатися ще.",
@@ -1570,6 +1844,31 @@
         "guarantees.honesty.description": "We perform work at a high level, providing quality guarantees. The mobile team delivers the object on time and does not inflate prices for services, regardless of the complexity of the tasks performed. The cost of work is announced to the customer before the team starts work.",
         "guarantees.quality.title": "Quality Above All",
         "guarantees.quality.description": "Each stage of work is controlled by the senior manager of CleanPro, so when the client accepts the object, there are practically no comments. Nevertheless, in controversial situations, we undertake to redo the work.",
+        
+         // Calculator
+        "calculator.title": "Calculate Cost",
+        "calculator.area": "Area (m²)",
+        "calculator.cleaningType": "Cleaning Type",
+        "calculator.regular": "Regular Cleaning",
+        "calculator.general": "General Cleaning",
+        "calculator.afterRenovation": "After Renovation Cleaning",
+        "calculator.extras": "Additional Services",
+        "calculator.windowCleaning": "Window Cleaning",
+        "calculator.furnitureCleaning": "Furniture Cleaning",
+        "calculator.carpetCleaning": "Carpet Cleaning",
+        "calculator.frequency": "Frequency",
+        "calculator.once": "One-time",
+        "calculator.weekly": "Weekly",
+        "calculator.biweekly": "Bi-weekly",
+        "calculator.monthly": "Monthly",
+        "calculator.resultTitle": "Estimated Cost",
+        "calculator.resultDescription": "This price is approximate. We will calculate the exact cost after inspecting the premises.",
+        "calculator.detailArea": "Area:",
+        "calculator.detailType": "Cleaning type:",
+        "calculator.detailExtras": "Additional services:",
+        "calculator.detailFrequency": "Frequency:",
+        "calculator.orderBtn": "Order with this calculation",
+        "calculator.note": "* Minimum cleaning cost - 420 UAH. A 10% discount is provided for weekly cleaning orders.",
         
         // Прибирання
         "cleaning.title": "General Cleaning",
@@ -1673,6 +1972,31 @@
         "about.title": "O nas",
         "about.text1": "CleanPro to zespół ekspertów w dziedzinie usług sprzątania. Dbamy o czystość Twojej przestrzeni jak o własną. Nasze doświadczenie i skupienie na szczegółach czynią nas idealnym wyborem dla Twojego domu lub biznesu.",
         "about.text2": "Działamy na rynku od ponad 5 lat i mamy setki zadowolonych klientów. Naszym celem jest nie tylko sprzątanie, ale tworzenie komfortowego i bezpiecznego środowiska dla Ciebie.",
+        
+        // Calculator
+        "calculator.title": "Oblicz koszt",
+        "calculator.area": "Powierzchnia (m²)",
+        "calculator.cleaningType": "Typ sprzątania",
+        "calculator.regular": "Sprzątanie regularne",
+        "calculator.general": "Sprzątanie generalne",
+        "calculator.afterRenovation": "Sprzątanie po remoncie",
+        "calculator.extras": "Dodatkowe usługi",
+        "calculator.windowCleaning": "Mycie okien",
+        "calculator.furnitureCleaning": "Czyszczenie mebli",
+        "calculator.carpetCleaning": "Czyszczenie dywanów",
+        "calculator.frequency": "Częstotliwość",
+        "calculator.once": "Jednorazowo",
+        "calculator.weekly": "Co tydzień",
+        "calculator.biweekly": "Co 2 tygodnie",
+        "calculator.monthly": "Co miesiąc",
+        "calculator.resultTitle": "Szacunkowy koszt",
+        "calculator.resultDescription": "Ta cena jest przybliżona. Dokładny koszt obliczymy po obejrzeniu pomieszczenia.",
+        "calculator.detailArea": "Powierzchnia:",
+        "calculator.detailType": "Typ sprzątania:",
+        "calculator.detailExtras": "Dodatkowe usługi:",
+        "calculator.detailFrequency": "Częstotliwość:",
+        "calculator.orderBtn": "Zamów według tego obliczenia",
+        "calculator.note": "* Minimalny koszt sprzątania - 420 UAH. Przy zamówieniu sprzątania cotygodniowego przysługuje 10% zniżki.",
         
         // Додаткова інформація
         "info.text1": "Jeśli chcesz żyć w komforcie i przytulności, firma sprzątająca CleanPro oferuje wysokiej jakości obsługę klienta w Kijowie i obwodzie kijowskim.",
@@ -1781,6 +2105,126 @@
           currentLanguage = browserLang;
         }
       }
+      
+      const areaSlider = document.getElementById('area');
+      const areaValue = document.getElementById('areaValue');
+      const cleaningType = document.getElementById('cleaningType');
+      const frequency = document.getElementById('frequency');
+      const windowCleaning = document.getElementById('windowCleaning');
+      const furnitureCleaning = document.getElementById('furnitureCleaning');
+      const carpetCleaning = document.getElementById('carpetCleaning');
+      const resultPrice = document.getElementById('resultPrice');
+      const resultDetails = document.getElementById('resultDetails');
+      const calculatorResult = document.getElementById('calculatorResult');
+      
+      // Ціни в гривнях
+      const priceRates = {
+        regular: 25,      // грн за м²
+        general: 40,      // грн за м²
+        afterRenovation: 60 // грн за м²
+      };
+      
+      const extraServices = {
+        windowCleaning: 300,
+        furnitureCleaning: 500,
+        carpetCleaning: 400
+      };
+      
+      const frequencyDiscount = {
+        once: 1,
+        weekly: 0.9,      // 10% знижка
+        biweekly: 0.95,   // 5% знижка
+        monthly: 1
+      };
+      
+      // Оновлення значення площі
+      areaSlider.addEventListener('input', () => {
+        areaValue.textContent = areaSlider.value;
+        calculatePrice();
+      });
+      
+      // Додавання обробників подій для всіх полів
+      cleaningType.addEventListener('change', calculatePrice);
+      frequency.addEventListener('change', calculatePrice);
+      windowCleaning.addEventListener('change', calculatePrice);
+      furnitureCleaning.addEventListener('change', calculatePrice);
+      carpetCleaning.addEventListener('change', calculatePrice);
+      
+      // Функція розрахунку ціни
+      function calculatePrice() {
+        const area = parseInt(areaSlider.value);
+        const type = cleaningType.value;
+        const freq = frequency.value;
+        
+        // Базова ціна за площу
+        let basePrice = area * priceRates[type];
+        
+        // Мінімальна ціна
+        if (basePrice < 420) basePrice = 420;
+        
+        // Додаткові послуги
+        let extrasPrice = 0;
+        let extrasList = [];
+        
+        if (windowCleaning.checked) {
+          extrasPrice += extraServices.windowCleaning;
+          extrasList.push(currentLanguage === 'uk' ? 'Миття вікон' : 
+                         currentLanguage === 'en' ? 'Window cleaning' : 'Mycie okien');
+        }
+        
+        if (furnitureCleaning.checked) {
+          extrasPrice += extraServices.furnitureCleaning;
+          extrasList.push(currentLanguage === 'uk' ? 'Хімчистка меблів' : 
+                         currentLanguage === 'en' ? 'Furniture cleaning' : 'Czyszczenie mebli');
+        }
+        
+        if (carpetCleaning.checked) {
+          extrasPrice += extraServices.carpetCleaning;
+          extrasList.push(currentLanguage === 'uk' ? 'Чистка килимів' : 
+                         currentLanguage === 'en' ? 'Carpet cleaning' : 'Czyszczenie dywanów');
+        }
+        
+        // Загальна ціна
+        let totalPrice = (basePrice + extrasPrice) * frequencyDiscount[freq];
+        
+        // Оновлення відображення ціни
+        resultPrice.textContent = Math.round(totalPrice).toLocaleString() + ' грн';
+        
+        // Оновлення деталей
+        const typeText = cleaningType.options[cleaningType.selectedIndex].text;
+        const freqText = frequency.options[frequency.selectedIndex].text;
+        const extrasText = extrasList.length > 0 ? extrasList.join(', ') : 
+                          (currentLanguage === 'uk' ? 'Немає' : 
+                           currentLanguage === 'en' ? 'None' : 'Brak');
+        
+        resultDetails.innerHTML = `
+          <li><span data-i18n="calculator.detailArea">Площа:</span> <span>${area} м²</span></li>
+          <li><span data-i18n="calculator.detailType">Тип прибирання:</span> <span>${typeText}</span></li>
+          <li><span data-i18n="calculator.detailExtras">Додаткові послуги:</span> <span>${extrasText}</span></li>
+          <li><span data-i18n="calculator.detailFrequency">Періодичність:</span> <span>${freqText}</span></li>
+        `;
+        
+        // Підсвічування результату при знижці
+        if (freq === 'weekly') {
+          calculatorResult.classList.add('highlight');
+        } else {
+          calculatorResult.classList.remove('highlight');
+        }
+        
+        // Оновлення перекладів для деталей
+        if (typeof setLanguage === 'function') {
+          const detailsElements = resultDetails.querySelectorAll('[data-i18n]');
+          detailsElements.forEach(element => {
+            const key = element.getAttribute('data-i18n');
+            if (translations[currentLanguage][key]) {
+              element.textContent = translations[currentLanguage][key];
+            }
+          });
+        }
+      }
+      
+      // Ініціалізація калькулятора
+      calculatePrice();
       
       // Функція для зміни мови
       function setLanguage(lang) {
