@@ -1,0 +1,484 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>CleanPro — Модернізований дизайн 2025</title>
+  <meta name="description" content="CleanPro — сучасна клінінгова компанія у Києві. Замовте прибирання онлайн: швидко, зручно, надійно." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg: linear-gradient(180deg,#f4fbff 0%, #f7f9fc 50%, #ffffff 100%);
+      --glass: rgba(255,255,255,0.55);
+      --glass-strong: rgba(255,255,255,0.75);
+      --accent1: #00b894; /* green */
+      --accent2: #6c5ce7; /* purple */
+      --muted: #64748b;
+      --card: rgba(255,255,255,0.65);
+      --shadow: 0 10px 30px rgba(12,20,30,0.08);
+      --radius: 14px;
+      --glass-blur: 8px;
+      color-scheme: light dark;
+    }
+
+    /* Dark theme variables (will be toggled on body.dark) */
+    body.dark{
+      --bg: linear-gradient(180deg,#061021 0%, #071226 50%, #041018 100%);
+      --glass: rgba(255,255,255,0.04);
+      --glass-strong: rgba(255,255,255,0.03);
+      --card: rgba(12,18,25,0.55);
+      --muted: #9aa4b2;
+      --shadow: 0 10px 30px rgba(2,6,12,0.6);
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
+      background:var(--bg);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      color: #0b1720;
+      line-height:1.5;
+      transition:background 0.4s ease,color 0.4s ease;
+      padding-bottom:120px;
+    }
+    body.dark { color: #e6eef6; }
+
+    .container{max-width:1200px;margin:0 auto;padding:24px;position:relative;z-index:5}
+
+    /* Top bar */
+    header.topbar{
+      position:sticky;top:12px;margin:0 24px;border-radius:16px;background:var(--glass-strong);
+      backdrop-filter: blur(var(--glass-blur));
+      box-shadow:var(--shadow);
+      z-index:60; padding:10px 18px;
+    }
+    .topbar-inner{display:flex;align-items:center;gap:18px;justify-content:space-between}
+    .logo{display:flex;gap:12px;align-items:center;font-weight:800;font-size:18px;color:var(--accent1)}
+    .logo .mark{width:42px;height:42px;border-radius:10px;background:linear-gradient(135deg,var(--accent1),var(--accent2));display:grid;place-items:center;color:white;font-weight:700;font-size:18px;box-shadow:0 6px 18px rgba(108,92,231,0.18)}
+    nav.primary{display:flex;gap:14px;align-items:center}
+    nav.primary a{color:inherit;text-decoration:none;padding:8px 12px;border-radius:10px;font-weight:600}
+    nav.primary a:hover{background:var(--glass);transform:translateY(-2px)}
+    .controls{display:flex;gap:8px;align-items:center}
+
+    /* Dark toggle and CTA */
+    .btn{
+      display:inline-flex;align-items:center;gap:10px;padding:10px 16px;border-radius:999px;border:none;cursor:pointer;font-weight:700;
+      background:linear-gradient(90deg,var(--accent1),#00a884);color:white;box-shadow:0 8px 24px rgba(0,184,148,0.18);
+      transition:transform .18s ease,box-shadow .18s ease;
+    }
+    .btn.secondary{
+      background:transparent;color:var(--accent2);border:2px solid rgba(108,92,231,0.14);box-shadow:none;font-weight:600;
+    }
+    .btn:active{transform:translateY(1px)}
+    .icon-btn{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:var(--glass);border:none}
+
+    /* Hero */
+    .hero{
+      margin-top:28px;padding:56px;border-radius:20px;background:linear-gradient(135deg, rgba(255,255,255,0.6), rgba(255,255,255,0.2));
+      backdrop-filter: blur(var(--glass-blur));box-shadow:var(--shadow);display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;
+    }
+    body.dark .hero{background:linear-gradient(135deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01))}
+    .hero h1{font-size:44px;line-height:1.02;margin:0 0 14px}
+    .hero h1 .accent{background:linear-gradient(90deg,var(--accent1),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+    .hero p{color:var(--muted);margin:0 0 18px;max-width:60ch}
+
+    .hero-actions{display:flex;gap:12px;align-items:center}
+    .hero-card{border-radius:14px;overflow:hidden;background:var(--card);padding:18px;box-shadow:var(--shadow);}
+
+    .hero-image{display:block;border-radius:12px;overflow:hidden}
+    .hero-image img{width:100%;height:auto;display:block;transform:scale(1);transition:transform .6s cubic-bezier(.2,.9,.2,1)}
+    .hero-image img:hover{transform:scale(1.02)}
+
+    /* Services grid */
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-top:28px}
+    .card{background:var(--card);padding:18px;border-radius:14px;box-shadow:var(--shadow);transition:transform .22s ease,box-shadow .22s ease}
+    .card:hover{transform:translateY(-8px);box-shadow:0 18px 40px rgba(2,6,24,0.12)}
+    .card h3{margin:0 0 8px;color:var(--accent1)}
+    .card p{margin:0;color:var(--muted)}
+
+    /* Calculator (compact modern) */
+    .calc{display:flex;gap:18px;align-items:flex-start}
+    .calc-form{flex:1;padding:18px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.5), rgba(255,255,255,0.35));backdrop-filter:blur(6px)}
+    .calc-result{width:320px;padding:20px;border-radius:12px;background:linear-gradient(180deg,var(--accent1),var(--accent2));color:white;box-shadow:0 10px 30px rgba(108,92,231,0.18)}
+    .price{font-size:36px;font-weight:800;margin:12px 0}
+    .range-row{display:flex;gap:12px;align-items:center}
+    input[type=range]{-webkit-appearance:none;height:8px;border-radius:999px;background:rgba(0,0,0,0.08);outline:none;width:100%}
+    input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;border-radius:50%;background:white;box-shadow:0 4px 12px rgba(0,0,0,0.14)}
+    label{display:block;margin-bottom:8px;font-weight:600;color:var(--muted)}
+    .small{font-size:13px;color:var(--muted)}
+
+    /* Testimonials */
+    .testimonials{margin-top:30px;display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .testimonial{padding:18px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.45));}
+
+    /* FAQ accordion */
+    .accordion-item{overflow:hidden;border-radius:12px;background:var(--card);padding:12px;margin-bottom:10px}
+    .accordion-header{display:flex;justify-content:space-between;align-items:center;cursor:pointer}
+    .accordion-content{max-height:0;overflow:hidden;transition:max-height .3s ease;padding-top:0}
+    .accordion-content.open{padding-top:12px}
+
+    /* Sticky CTA bubble */
+    .cta-bubble{position:fixed;right:22px;bottom:22px;border-radius:999px;padding:14px 18px;background:linear-gradient(90deg,var(--accent2),var(--accent1));color:white;box-shadow:0 18px 50px rgba(12,20,40,0.25);z-index:120;display:flex;gap:12px;align-items:center}
+    .cta-bubble small{opacity:.9}
+
+    /* Footer */
+    footer{margin-top:40px;padding:40px;border-radius:16px;background:var(--glass);backdrop-filter:blur(8px);box-shadow:var(--shadow);}
+
+    /* Responsive */
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr}
+      .testimonials{grid-template-columns:1fr}
+      .calc{flex-direction:column}
+      .calc-result{width:100%}
+    }
+    @media (max-width:520px){
+      .topbar-inner{gap:8px}
+      .logo{font-size:16px}
+      .hero h1{font-size:28px}
+    }
+
+    /* subtle floating decor */
+    .decor-dot{position:absolute;border-radius:999px;filter:blur(30px);opacity:.12;z-index:0}
+    .decor-dot.one{width:220px;height:220px;right:5%;top:10%;background:radial-gradient(circle,#6c5ce7,#00b894)}
+    .decor-dot.two{width:160px;height:160px;left:6%;bottom:8%;background:radial-gradient(circle,#00b894,#6c5ce7)}
+  </style>
+</head>
+<body>
+  <div class="decor-dot one" aria-hidden="true"></div>
+  <div class="decor-dot two" aria-hidden="true"></div>
+
+  <header class="topbar" role="banner" aria-label="Головне меню">
+    <div class="container topbar-inner">
+      <div style="display:flex;align-items:center;gap:14px">
+        <div class="logo" aria-hidden="true">
+          <div class="mark">C</div>
+          CleanPro
+        </div>
+        <nav class="primary" role="navigation" aria-label="Основна навігація">
+          <a href="#services">Послуги</a>
+          <a href="#calculator">Калькулятор</a>
+          <a href="#testimonials">Відгуки</a>
+          <a href="#contact">Контакти</a>
+        </nav>
+      </div>
+
+      <div class="controls" role="group" aria-label="Контролі">
+        <button id="themeToggle" class="icon-btn" aria-pressed="false" title="Перемкнути тему" aria-label="Тема">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+        </button>
+
+        <button class="btn secondary" id="quickOrderBtn" aria-haspopup="dialog">
+          Замовити
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container" id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div>
+        <h1 id="hero-title">Чистота — <span class="accent">нова ера вашого дому</span></h1>
+        <p>CleanPro — сучасні клінінгові рішення у Києві з гарантією якості. Швидке онлайн-замовлення, прозорий розрахунок та опція «до/після» з фотозвітом.</p>
+
+        <div class="hero-actions">
+          <a class="btn" href="#calculator">Розрахувати вартість</a>
+          <button class="btn secondary" id="showCases">Дивитися кейси</button>
+        </div>
+
+        <div style="margin-top:16px" class="hero-card" aria-hidden="false">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+            <div>
+              <div class="small">Початкова ціна</div>
+              <div style="font-weight:800;font-size:20px">від 420 грн</div>
+            </div>
+            <div style="text-align:right">
+              <div class="small">Знижка</div>
+              <div style="font-weight:800;color:yellow">10% при підписці</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="hero-image" aria-hidden="true">
+        <img src="https://cdn.inmyroom.ru/uploads/post/teaser/0c/0cdd/0cdd3293-0164-40ec-80af-6d029edbc171.jpg" alt="Приклад прибирання">
+      </aside>
+    </section>
+
+    <!-- Services -->
+    <section id="services" style="margin-top:18px">
+      <h2 style="margin:0 0 12px;font-size:22px">Наші послуги</h2>
+      <div class="grid" role="list">
+        <article class="card" role="listitem" aria-label="Еко-засоби">
+          <h3>Еко-засоби</h3>
+          <p>Безпечні та сертифіковані засоби для дому та офісу.</p>
+        </article>
+
+        <article class="card" role="listitem" aria-label="Швидке прибирання">
+          <h3>Швидке прибирання</h3>
+          <p>Оперативно та акуратно, навіть складні забруднення.</p>
+        </article>
+
+        <article class="card" role="listitem" aria-label="Післяремонтне прибирання">
+          <h3>Післяремонтне прибирання</h3>
+          <p>Вивезення сміття, чистка поверхонь, пилососування будівельного пилу.</p>
+        </article>
+
+        <article class="card" role="listitem" aria-label="Хімчистка меблів">
+          <h3>Хімчистка меблів</h3>
+          <p>Глибоке очищення для диванів, крісел та матраців.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Calculator -->
+    <section id="calculator" style="margin-top:26px">
+      <h2 style="margin:0 0 12px;font-size:22px">Калькулятор вартості</h2>
+      <div class="calc" aria-live="polite">
+        <form class="calc-form" id="calcForm" onsubmit="return false" aria-label="Калькулятор">
+          <div style="margin-bottom:12px">
+            <label for="area">Площа (м²)</label>
+            <div class="range-row">
+              <input id="area" type="range" min="20" max="300" step="5" value="50" />
+              <div style="min-width:64px;text-align:center;font-weight:700" id="areaVal">50 м²</div>
+            </div>
+          </div>
+
+          <div style="margin-bottom:12px">
+            <label for="type">Тип прибирання</label>
+            <select id="type" class="small" style="padding:10px;border-radius:10px;border:none;min-width:200px">
+              <option value="regular">Підтримувальне</option>
+              <option value="general">Генеральне</option>
+              <option value="after">Післяремонтне</option>
+            </select>
+          </div>
+
+          <div style="margin-bottom:12px">
+            <label>Додаткові послуги</label>
+            <div style="display:flex;gap:8px;flex-wrap:wrap">
+              <label style="display:inline-flex;gap:8px;align-items:center"><input type="checkbox" id="win" value="50"> Миття вікон</label>
+              <label style="display:inline-flex;gap:8px;align-items:center"><input type="checkbox" id="fur" value="150"> Хімчистка меблів</label>
+              <label style="display:inline-flex;gap:8px;align-items:center"><input type="checkbox" id="car" value="120"> Чистка килимів</label>
+            </div>
+          </div>
+
+          <div style="margin-top:8px">
+            <label for="freq">Періодичність</label>
+            <select id="freq" class="small" style="padding:10px;border-radius:10px;border:none">
+              <option value="once">Одноразово</option>
+              <option value="weekly">Щотижня (-10%)</option>
+              <option value="biweekly">Раз на 2 тижні</option>
+              <option value="monthly">Щомісяця</option>
+            </select>
+          </div>
+
+          <div style="margin-top:16px;display:flex;gap:8px">
+            <button class="btn" id="calcBtn">Оновити</button>
+            <button class="btn secondary" id="quickBtn" type="button">Хочу швидко</button>
+          </div>
+        </form>
+
+        <aside class="calc-result" aria-label="Результат розрахунку">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <div style="font-weight:700">Орієнтовна вартість</div>
+            <div class="small">Орієнтовна</div>
+          </div>
+          <div class="price" id="price">1 250 грн</div>
+          <div class="small" id="breakdown">Площа: 50 м² • Підтримувальне</div>
+          <div style="margin-top:12px">
+            <a class="btn" href="#contact" id="orderFromCalc">Замовити</a>
+          </div>
+        </aside>
+      </div>
+
+      <div class="small" style="margin-top:10px;color:var(--muted)">* Мінімальна вартість 420 грн. Щотижневий сервіс — знижка 10%.</div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" style="margin-top:26px">
+      <h2 style="margin:0 0 12px;font-size:22px">Відгуки</h2>
+      <div class="testimonials" role="list">
+        <div class="testimonial" role="listitem">
+          <div style="font-style:italic">"Замовляла генеральне прибирання — все чудово!"</div>
+          <div style="margin-top:8px;font-weight:700">Олена К.</div>
+        </div>
+
+        <div class="testimonial" role="listitem">
+          <div style="font-style:italic">"Професійно та швидко. Рекомендую."</div>
+          <div style="margin-top:8px;font-weight:700">Андрій П.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section style="margin-top:26px">
+      <h2 style="margin:0 0 12px;font-size:22px">Питання</h2>
+      <div class="accordion" id="faq">
+        <div class="accordion-item">
+          <div class="accordion-header">Як довго триває прибирання?<button class="icon-btn" aria-hidden="true">▾</button></div>
+          <div class="accordion-content"><p class="small">Залежить від площі — 50–70 м² займає 3–4 години.</p></div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header">Чи потрібно давати миючі засоби?<button class="icon-btn" aria-hidden="true">▾</button></div>
+          <div class="accordion-content"><p class="small">Ні — ми привозимо все необхідне.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" style="margin-top:26px">
+      <h2 style="margin:0 0 12px;font-size:22px">Контакти</h2>
+      <div style="display:grid;grid-template-columns:1fr 360px;gap:18px">
+        <div class="card">
+          <h3>CleanPro</h3>
+          <p>м. Київ, вул. Прибирання, 1</p>
+          <p>+38 (099) 123-45-67 • info@cleanpro.ua</p>
+          <div style="margin-top:12px">
+            <a class="btn" href="tel:+380991234567">Подзвонити</a>
+            <a class="btn secondary" href="mailto:info@cleanpro.ua">Написати</a>
+          </div>
+        </div>
+
+        <form class="card" id="contactForm" aria-label="Форма контакту">
+          <label class="small" for="nm">Ім'я</label>
+          <input id="nm" required style="padding:10px;border-radius:10px;border:none;margin-bottom:8px;width:100%" />
+          <label class="small" for="ph">Телефон</label>
+          <input id="ph" required style="padding:10px;border-radius:10px;border:none;margin-bottom:8px;width:100%" />
+          <label class="small" for="msg">Повідомлення</label>
+          <textarea id="msg" rows="4" style="padding:10px;border-radius:10px;border:none;width:100%"></textarea>
+          <div style="margin-top:12px">
+            <button class="btn" type="submit">Відправити</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="container" role="contentinfo" aria-label="Футер">
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+      <div>&copy; 2025 CleanPro • Всі права захищені</div>
+      <div style="display:flex;gap:8px;align-items:center">
+        <a class="small" href="#privacy">Політика конфіденційності</a>
+        <a class="small" href="#terms">Умови</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Sticky CTA bubble -->
+  <a class="cta-bubble" href="#contact" aria-label="Швидке замовлення">
+    <strong>Замовити</strong>
+    <small>від 420 грн</small>
+  </a>
+
+<script>
+  // Theme toggle with persistence
+  (function(){
+    const btn = document.getElementById('themeToggle');
+    const root = document.documentElement;
+    const body = document.body;
+    const stored = localStorage.getItem('theme');
+    if(stored === 'dark') body.classList.add('dark'), btn.setAttribute('aria-pressed','true');
+    btn.addEventListener('click', ()=> {
+      const is = body.classList.toggle('dark');
+      btn.setAttribute('aria-pressed', String(is));
+      localStorage.setItem('theme', is ? 'dark' : 'light');
+    });
+  })();
+
+  // Simple calculator logic
+  (function(){
+    const area = document.getElementById('area');
+    const areaVal = document.getElementById('areaVal');
+    const type = document.getElementById('type');
+    const freq = document.getElementById('freq');
+    const win = document.getElementById('win');
+    const fur = document.getElementById('fur');
+    const car = document.getElementById('car');
+    const priceEl = document.getElementById('price');
+    const breakdown = document.getElementById('breakdown');
+    const calcBtn = document.getElementById('calcBtn');
+
+    function compute(){
+      const a = Number(area.value);
+      let basePerSq = 20; // грн за м2 базовий
+      if(type.value === 'general') basePerSq = 28;
+      if(type.value === 'after') basePerSq = 35;
+      let sum = Math.max(420, Math.round(a * basePerSq));
+      // extras
+      if(win.checked) sum += Number(win.value || 50);
+      if(fur.checked) sum += Number(fur.value || 150);
+      if(car.checked) sum += Number(car.value || 120);
+      // frequency discount
+      if(freq.value === 'weekly') sum = Math.round(sum * 0.9);
+      // nice formatting
+      priceEl.textContent = new Intl.NumberFormat('uk-UA').format(sum) + ' грн';
+      breakdown.textContent = `Площа: ${a} м² • ${type.options[type.selectedIndex].text}`;
+    }
+
+    area.addEventListener('input', ()=> {
+      areaVal.textContent = area.value + ' м²';
+      compute();
+    });
+    [type,freq,win,fur,car].forEach(el=> el && el.addEventListener('change', compute));
+    calcBtn.addEventListener('click', compute);
+
+    // initial
+    compute();
+  })();
+
+  // Accordion
+  (function(){
+    document.querySelectorAll('.accordion-item').forEach(item=>{
+      const header = item.querySelector('.accordion-header');
+      const content = item.querySelector('.accordion-content');
+      header.addEventListener('click', ()=> {
+        const isOpen = content.classList.toggle('open');
+        if(isOpen) content.style.maxHeight = content.scrollHeight + 'px';
+        else content.style.maxHeight = null;
+      });
+    });
+  })();
+
+  // Quick order modal (simple prompt)
+  (function(){
+    document.getElementById('quickOrderBtn').addEventListener('click', ()=> {
+      const name = prompt('Ваше ім\\'я (коротко):');
+      if(!name) return alert('Скасовано');
+      const phone = prompt('Телефон:');
+      if(!phone) return alert('Скасовано');
+      alert('Дякуємо! Ми отримали заявку. Очікуйте дзвінка.');
+    });
+
+    document.getElementById('quickBtn').addEventListener('click', ()=> {
+      // auto-fill contact form
+      document.getElementById('nm').value = 'Швидке замовлення';
+      document.getElementById('ph').value = '+38 ';
+      window.location.hash = '#contact';
+    });
+
+    // contact form submit simulation
+    document.getElementById('contactForm').addEventListener('submit', (e)=>{
+      e.preventDefault();
+      alert('Дякуємо! Повідомлення відправлено. Ми зв\'яжемося з вами найближчим часом.');
+      document.getElementById('contactForm').reset();
+    });
+  })();
+
+  // Smooth reveal on scroll (simple)
+  (function(){
+    const els = document.querySelectorAll('.card, .testimonial, .hero-card, .calc-form, .calc-result');
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(ent=>{
+        if(ent.isIntersecting) { ent.target.style.opacity=1; ent.target.style.transform='translateY(0)'; io.unobserve(ent.target) }
+      });
+    }, {threshold:0.12});
+    els.forEach(el=>{ el.style.opacity=0; el.style.transform='translateY(18px)'; io.observe(el); });
+  })();
+
+</script>
+</body>
+</html>
